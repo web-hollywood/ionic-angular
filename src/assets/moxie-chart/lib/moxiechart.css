@@ -1,0 +1,344 @@
+.moxiechart_growth_axis path,.moxiechart_growth_axis line {
+	fill: none;
+}
+
+/* bubble */
+.moxiechart_growth_dot {
+	fill: #FFDB00;
+}
+
+.moxiechart_growth_dot_no_level {
+	fill: #0000ff;
+}
+
+.moxiechart_growth_dotLegend {
+	fill: #FFDB00;
+}
+
+.moxiechart_growth_textLegend {
+	font-family: 'Alegreya Sans', sans-serif;
+	/* font-weight: bold;  */
+	fill: #6E6E6E;
+}
+
+.moxiechart_growth_titleText {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: bold;
+	fill: black;
+}
+/* Tooltip */
+.moxiechart_growth_d3-tip {
+	line-height: 1;
+	padding: 10px;
+	background: rgba(128, 128, 128, 0.8);
+	color: #fff;
+	border-radius: 2px;
+	font-family: 'Alegreya Sans', sans-serif;
+	z-index: 999;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.moxiechart_growth_d3-tip:after {
+	box-sizing: border-box;
+	display: inline;
+	width: 100%;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	text-align: center;
+}
+
+.moxiechart_growth_d3-tip.n:after {
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
+}
+
+.moxiechart_growth_grid {
+	stroke: #F1F1F1;
+	shape-rendering: crispEdges;
+}
+
+.moxiechart_growth_grid path {
+	stroke-width: 0;
+}
+
+.moxiechart_growth_axis text {
+	fill: #6E6E6E;
+	font-family: 'Alegreya Sans', sans-serif;
+}
+/* the grey bands across the chart */
+.moxiechart_growth_band0 {
+	fill: #81BE42;
+	fill-opacity: 0.5;
+}
+
+.moxiechart_growth_band1 {
+	fill: #81BE42;
+}
+
+.moxiechart_growth_band2 {
+	fill: #81BE42;
+	fill-opacity: 0.5;
+}
+
+.moxiechart_growth_bottomline {
+	stroke: #A5A5A5;
+	stroke-width: 2px;
+	fill: none;
+}
+
+.moxiechart_growth_bottomlineLegend {
+	stroke: #B8B8B8;
+	stroke-width: 1px;
+	fill: none;
+}
+
+.moxiecharts_progress_bookLine {
+	fill: none;
+	stroke-width: 2px;
+	shape-rendering: crispEdges;
+	stroke: white;
+}
+
+.moxiecharts_progress_bookOutline {
+	fill: none;
+	stroke-width: 2px;
+	shape-rendering: crispEdges;
+	stroke: white;
+}
+
+.moxiecharts_progress_bookFill {
+	fill: #93C83D;
+	opacity: 0.7;
+}
+
+.moxiecharts_progress_bookFillGrey {
+	fill: grey;
+}
+
+.moxiecharts_progress_bookFillOver {
+fill: #0051c1;
+}
+
+.moxiechart_lastweek_topHeading {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #565656;
+}
+
+.moxiechart_lastweek_numberSubheading {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #565656;
+}
+
+.moxiechart_lastweek_textSubheading {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #565656;
+}
+
+.moxiechart_lastweek_textSubheadingHeading {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #565656;
+}
+
+.moxiechart_lastweek_clockdiv {
+    font-family: Sans Source Pro, sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+}
+
+.moxiechart_lastweek_clockdiv>div {
+    display: inline-block;
+}
+
+.moxiechart_lastweek_clockdiv div>span {
+    background: grey;
+    display: inline-block;
+}
+
+.moxiechart_lastweek_bar {
+    stroke-width: 2;
+}
+
+.moxiechart_lastweek_legend {
+    font-family: 'Alegreya Sans', sans-serif;	
+}
+
+.moxiechart_readingteams_topHeading {
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: center;
+  color: #565656;
+}
+
+.moxiechart_readingteams_numberSubheading {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #565656;
+}
+
+.moxiechart_readingteams_textSubheading {
+	font-family: 'Alegreya Sans', sans-serif;
+	white-space: nowrap;
+	text-align: right;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	color: #565656;
+}
+
+.moxiechart_readingteams_textSubheadingHeading {
+	font-family: 'Alegreya Sans', sans-serif;
+	text-align: center;
+	color: #565656;
+	white-space: nowrap;
+}
+
+.moxiechart_readingteams_toolTip {
+    font-family: 'Alegreya Sans', sans-serif;
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    background: none repeat scroll 0 0 white;
+    border: 0 none;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: -3px 3px 15px #888888;
+    color: black;
+    font: 12px sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+
+.moxiechart_error_message {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #565656;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.moxiechart_hunt_topheading {
+	font-family: 'Alegreya Sans', sans-serif;
+	float: right;
+	font-weight: bold;
+}
+.moxiechart_hunt_instructions {
+	font-family: 'Alegreya Sans', sans-serif;
+	float: left;
+}
+
+.moxiecharts_hunt_barfill_big {
+    fill: #93c83d;
+    opacity: 1;
+}
+
+.moxiecharts_hunt_barfill {
+    fill: #0051c1;
+    opacity: 0.7;
+}
+
+.moxiecharts_hunt_barbackground {
+	fill: #d2d2d2;
+}
+
+.moxiecharts_hunt_baroutline {
+	fill: none;
+	stroke-width: 2px;f
+	shape-rendering: crispEdges;
+	stroke: white;
+}
+
+.moxiechart_hunt_classtitle {
+	font-family: 'Alegreya Sans', sans-serif;
+}
+.moxiechart_hunt_individualrecord {
+	font-family: 'Alegreya Sans', sans-serif;
+	display:flex;
+}
+.moxiechart_hunt_students {
+	display: flex;
+	flex-wrap: wrap;
+}
+.moxiechart_hunt_individualimage {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;	
+}
+.moxiechart_hunt_individualrecord {
+	display: block;
+}
+.moxiechart_hunt_individualstudent {
+	text-align: center;
+}
+.moxiechart_hunt_info_icon {
+	cursor: pointer;
+	position: absolute;
+	background-image: url("purple_info_icon.png");
+	background-repeat: no-repeat;
+}
+.moxiechart_hunt_info {
+    display: none;
+    height: 90%;
+    width: 50%;
+    background-color: #93C83D;
+    position: fixed;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 100;
+    opacity: 0.95;
+    color: white;
+    font-family: 'Alegreya Sans', sans-serif;
+    overflow: auto;
+}
+.moxiechart_hunt_timer {
+	float: right;
+}
+.moxiechart_card_border {
+    fill: transparent;
+    stroke: #558DCA;
+    shape-rendering: crispEdges;
+    stroke-width: 4px;
+}
+.moxiechart_card_current_week {
+    fill: #Ffdb00;
+    stroke: #558DCA;
+    stroke-width: 2px;
+}
+.moxiechart_card_past_week {
+    fill: #558dca;
+    stroke: #558DCA;
+    stroke-width: 2px;
+}
+.moxiechart_card_future_week {
+    fill: #4eaf46;
+    stroke: #558DCA;
+    stroke-width: 2px;
+}
+.moxiechart_card_selected_week {
+    fill: transparent;
+    stroke: #558DCA;
+    stroke-width: 2px;
+}
+.moxiechart_card_divider {
+    stroke-width: 2px;
+    stroke: #558DCA;
+}
+.moxiechart_card_number_text {
+    fill: #93C83D;
+    font-weight: bold;
+}
+.moxiechart_card_weeks {
+    cursor: pointer; 
+}
+.moxiechart_card_challenge_title {
+    font-weight: bold;
+}
+.moxiechart_card_weeks_characters {
+    fill: white;
+    font-family: FontAwesome;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    cursor: pointer; 
+}

@@ -1,0 +1,144 @@
+<ion-header>
+	<ion-navbar *ngIf="mode === 'teacher'" color="moxie_{{mode}}">
+		<ion-title>Student Detail</ion-title>
+	</ion-navbar>
+	<ion-navbar *ngIf="mode === 'class'" hideBackButton color="moxie_{{mode}}">
+		<ion-title>Student Detail</ion-title>
+		<ion-buttons right>
+			<button ion-button icon-only *ngIf="mode == 'class' || mode == 'parent'" (click)="finish()">
+        Finish
+      </button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div class="col-left-sprofile">
+		<ion-item no-lines text-wrap>
+			<ion-avatar class="profile-pic" item-left>
+				<img *ngIf="studentID && studentID !=''" src="{{config.mainURL}}/class/{{classID}}/student/{{studentID}}/avatar/thumbnail?width=160&{{config.noCacheImg}}">
+			</ion-avatar>
+			<div>
+				<h2>{{studentData?.student.title}}</h2>
+				<h3 *ngIf="mode == 'teacher'">Reading Level: {{studentData?.student.cycle.readinglevel}}</h3>
+				<h3 *ngIf="mode == 'teacher'">Target Reading Level: {{studentData?.student.cycle.target_readinglevel}}</h3>
+				<div Class="progressChart" id="progressChart"></div>
+			</div>
+			<div class="div_cog" *ngIf="(mode == 'class') && studentData?.classroom.requirestudentpin == '1'" (click)="goedit()">
+				<ion-icon name="md-settings"></ion-icon>
+			</div>
+		</ion-item>
+
+
+
+		<ion-item class="studentAlert" text-wrap *ngIf="(mode == 'teacher') && studentData?.student.alert">
+			@Moxiereader: {{studentData.student.alert}}
+		</ion-item>
+
+		<ion-item class="studentAlert" *ngIf="(mode != 'teacher') && (loginMode != 'parent') && (studentData?.student.hunt_status)">
+			<img src="assets/images/hamster.png" class="hunt_img">
+			<div class="div_hunt">
+				{{studentData.student.hunt_status}}
+			</div>
+		</ion-item>
+
+		<ion-label class='lb_schalleng' (click)="ch_click()">{{ch_title}}:</ion-label>
+		<ion-item no-lines class="pages_sec">
+			<ion-grid text-center>
+				<ion-row class="row_val">
+					<ion-col class="font-number">{{ch_books[ch_idx]}}</ion-col>
+					<ion-col class="font-number">{{ch_pages[ch_idx]}}</ion-col>
+					<ion-col *ngIf="studentData && studentData.classroom.recordminutes==1" class="font-number">{{ch_minutes[ch_idx]}}</ion-col>
+					<ion-col class="font-number">{{ch_points[ch_idx]}}</ion-col>
+				</ion-row>
+
+				<ion-row class="row_lb">
+					<ion-col>Books</ion-col>
+					<ion-col>Pages</ion-col>
+					<ion-col *ngIf="studentData && studentData.classroom.recordminutes==1">Minutes</ion-col>
+					<ion-col>Moxie</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+
+		<div class="gaugeChart" id="gaugeChart" text-center *ngIf="mode == 'class' || mode == 'parent'"></div>
+		<div class="growthChart" id="growthChart" text-center *ngIf="mode == 'teacher'"></div>
+
+		<!-- Currently Reading Books -->
+		<div class="div_sec" *ngIf="currentBooks.length"></div>
+		<ion-title text-uppercase *ngIf="currentBooks.length" id="current-reading-element">Currently Reading:</ion-title><br/>
+		<div class="div_currentSlider" *ngIf="currentBooks.length">
+			<div class="customLoading" *ngIf="isLoadingCurrent">
+				<div>Loading...</div>
+			</div>
+			<div class="swiper-container" [swiper]="config_swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" *ngFor="let book of currentBooks; let i=index;">
+						<button class="dropdown" tappable (click)="presentPopover($event, book)">
+							<img src="assets/images/down-arrow-icon.png">
+						</button>
+						<feed-item [data]="book" [visibleReview]="false" (onClick)="openDetailC($event)"></feed-item>
+						<reading-bar [rbook]="book" classId="{{config.class_id}}" isDownArrow="true" isFinish="true" [isreadmin]="isreadmin" id="readingbar"
+							(updateReadingCallback)="openUpdate($event)" updateFinishCallback="openFinish($event)"></reading-bar>
+					</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+
+		<!-- Recommended Books for a student -->
+		<div class="div_sec" *ngIf="recommended[0]?.books.length"></div>
+		<ion-title text-uppercase *ngIf="recommended[0]?.books.length">Recommended:</ion-title><br/>
+		<div class="div_recommendSlider" *ngIf="recommended[0]?.books.length">
+			<div class="swiper-container" [swiper]="config_swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" *ngFor="let book of recommended[0]?.books">
+						<feed-item [data]="{book:book}" [visibleReview]="false" (onClick)="openDetail($event)"></feed-item>
+					</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-right-sprofile">
+		<div class="customLoading" *ngIf="isLoadingFeed">
+			<div>Loading...</div>
+		</div>
+		<!-- Student Feed -->
+		<ion-segment [(ngModel)]="selectedSeg">
+			<ion-segment-button value="logged" (click)="click_reloadGroupFeed()">
+				My Reading
+			</ion-segment-button>
+			<ion-segment-button value="grouped" (click)="click_reloadGroupFeed()">
+				Groups Feed
+			</ion-segment-button>
+			<ion-segment-button value="toRead" (click)="click_reloadGroupFeed()">
+				Selected To-Be-Read
+			</ion-segment-button>
+		</ion-segment>
+		<br/>
+
+		<ion-list *ngIf="selectedSeg === 'logged'">
+			<div *ngIf="!(logFeed.length)" class="nofeed">No Books yet.</div>
+			<feed-item *ngFor="let log of logFeed; let i = index;" [currentStudent]="studentData.student" [canRemoveBook]="true" [data]="log" [isLogFeed]="true" [isedit]="config.mode == 'student'" (onClick)="openDetail($event)" (select)="selectBook($event)" (cheer)="cheerBook($event)" (share)="shareBook($event)" (removeBook)="removeBookFromLogged($event, i)" showDate="true" (editReview)="editReview($event, i)" (openFile)="openFile($event)">
+				</feed-item>
+		</ion-list>
+
+		<ion-list *ngIf="selectedSeg === 'grouped'">
+			<div *ngIf="!(classFeed.length)" class="nofeed">No Books yet.</div>
+			<feed-item *ngFor="let log of classFeed; let i = index;" advance="true" [isGroupFeed]="true" [currentStudent]="studentData.student" [data]="log" [reasonList]="reasonList" (onClick)="openDetail($event)" (select)="selectBook($event)" (cheer)="cheerBook($event)" (share)="shareBook($event)" (editReview)="editReview($event, i)" (openFile)="openFile($event)"></feed-item>
+		</ion-list>
+
+		<ion-list *ngIf="selectedSeg === 'toRead'">
+			<div *ngIf="!(selectFeed.length)" class="nofeed">No Books yet.</div>
+			<feed-item *ngFor="let log of selectFeed; let i = index" [data]="log" [reasonList]="reasonList" [isSelected]="true" [currentStudent]="studentData.student" removeable="true" (onClick)="openDetail($event)" (select)="selectBook($event)" (cheer)="cheerBook($event)" (share)="shareBook($event)" canRemoveBook="true" removeBookType="SELECTED" (removeBook)="removeBookFromRead($event, i, 'SELECTED')" (editReview)="editReview($event)"></feed-item>
+		</ion-list>
+
+		<div class="space"></div>
+	</div>
+</ion-content>

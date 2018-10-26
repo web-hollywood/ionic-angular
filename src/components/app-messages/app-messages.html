@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="container">
+    <div class="message-container">
+      <ion-card class="message-card demo-card" *ngFor="let message of messages" [ngClass]="{'demo-card': message.action == null}">
+        <div class="card-title">Hi there!</div>
+        <div class="card-content">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <div>
+                  <img src="assets/images/bear.png" />
+                </div>
+              </ion-col>
+              <ion-col col-8 class="message-wrapper">
+                <div class="message-box" *ngIf="message.action != null" (click)="fireEvent(message.action.event)">
+                  <div class="card-text">{{message.title}} {{message.text}}</div>
+                  <div class="triangle"></div>
+                </div>
+                <div class="message-box" *ngIf="message.action == null">
+                  <div class="card-text">{{message.title}} {{message.text}}</div>
+                  <div class="triangle"></div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </div>
+      </ion-card>
+    </div>
+  </div>
+  <div class="button-container">
+    <button large ion-button full color="navbarBlue" (click)="dismiss()">Ok</button>
+  </div>
+</ion-content>

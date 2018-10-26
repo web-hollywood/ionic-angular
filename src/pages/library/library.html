@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <button ion-button icon-only menuToggle *ngIf="!(this.config.pstudent)">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Library</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="col-left-sprofile">
+    <div *ngFor="let page of pages; let i = index;">
+      <button ion-button round full (click)="open(page)" color="moxie_class" *ngIf="(i != 1) || ((config.mode != 'class') || (config.mode == 'class' && config.addLibrary == '1'))">	{{page.name}}	</button>
+    </div>
+    <br/>
+  </div>
+  <div class="col-right-sprofile">
+    <div class="customLoading" *ngIf="isLoadingFeed">
+      <div>Loading...</div>
+    </div>
+    <div class="div_book_review">
+      <ion-segment [(ngModel)]="selectedSeg">
+        <ion-segment-button value="class" (click)="click_classBookReviews()">
+          Class Book Reviews
+        </ion-segment-button>
+        <ion-segment-button value="school" (click)="click_schoolBookReviews()">
+          School Book Reviews
+        </ion-segment-button>
+      </ion-segment>
+      <br/>
+      <ion-list *ngIf="selectedSeg === 'class' && feed">
+        <div *ngIf="!(feed.length)" class="nofeed">No Review yet.</div>
+        <feed-item advance="false" [bookReview]="false" [visibleReview]='true' [isCollective]='true' [isGroupFeed]='true' *ngFor="let log of feed; let i = index;" [data]="log" (editReview)="editReview($event, i)" (onClick)="openDetail($event)" (openFile)="openFile($event)" (cheer)="cheerBook($event)">
+        </feed-item>
+      </ion-list>
+      <ion-list *ngIf="selectedSeg === 'school'">
+        <div *ngIf="!(feed_school.length)" class="nofeed">No Review yet.</div>
+        <feed-item advance="false" [bookReview]="false" [visibleReview]='true' [isCollective]='true' [isGroupFeed]='true' *ngFor="let log of feed_school; let i = index;" [data]="log" (editReview)="editReview($event, i)" (onClick)="openDetail($event)" (openFile)="openFile($event)" (cheer)="cheerBook($event)">
+        </feed-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

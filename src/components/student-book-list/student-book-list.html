@@ -1,0 +1,52 @@
+
+<ng-container *ngIf="mode === 'parent'" #mainContainer>
+
+	<ion-list *ngFor="let student of list.students; let student=student" [ngClass]="{'pending': student.home_status==='waiting'}">
+    
+    <ion-item no-lines>
+			<span class="moxie-main-text-light group_title" margin-bottom>{{student.classroom_title}}</span>
+		</ion-item>
+
+    <ion-item no-lines class="card-body">
+      <ion-row *ngIf="student.home_status=='active'">
+        <ion-col col-3>
+          <div tappable (click)="select(student)" >
+      			<div *ngIf="student.badge && type === 'advance'">
+    					<div class="moxie-alert-container" *ngIf="student.badge === 'star'">
+    						<img class="moxie-alert" src="assets/images/star.png">
+    					</div>
+    					<div class="moxie-alert-container" *ngIf="student.badge === 'alert'">
+    						<img class="moxie-alert" src="assets/images/alert.png">
+    					</div>
+      			</div>
+      			<ion-avatar text-center>
+      				<img class="list-avatar" *ngIf="student.avatar != ''" [src]="student.avatar">
+      			</ion-avatar>
+      			<span class="student-title-text">{{student.title}}</span>
+          </div>
+        </ion-col>
+        <ion-col col-9>
+          <div style="width:100%; position:relative;">
+            <div  class="swiper-container" [swiper]="config_swiper" *ngIf="student.currentBooks!=undefined && student.currentBooks.length!=0">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let data of student.currentBooks">
+                  <feed-item ishome="true" [data]="data" [visibleReview]="false" (onClick)="openDetail(data)"></feed-item>
+                </div>
+              </div>
+              <div class="swiper-button-prev" *ngIf="(config_swiper.slidesPerView==1 && student.currentBooks.length>1) || (config_swiper.slidesPerView==2 && student.currentBooks.length>2)"></div>
+              <div class="swiper-button-next" *ngIf="(config_swiper.slidesPerView==1 && student.currentBooks.length>1) || (config_swiper.slidesPerView==2 && student.currentBooks.length>2)"></div>
+            </div>
+            <h4 *ngIf="student.currentBooks==undefined || student.currentBooks.length==0" (click)="addCurrentBook(student)">Add your currently reading book</h4>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="student.home_status=='waiting'" > 
+        <ion-col class="pending">
+            <span>You have requested "{{student.title}}" to join class "{{student.classroom_title}}"</span>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+  </ion-list>
+
+</ng-container>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar hideBackButton color="moxie_{{config.mode}}">
+    <ion-title>My Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+	  <ion-row>
+	  	<img class="profile-img" src={{config.getSelectedProfile().data?.avatar}}/>
+	  </ion-row>
+  </ion-grid>
+  <ion-list text-wrap>
+	  <ion-item>
+	    <ion-label color="primary" floating>Name</ion-label>
+	    <ion-input type="text" [value]="config.getSelectedProfile().data?.title" id="myprofile_name"></ion-input>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label color="primary" floating>Email</ion-label>
+	    <ion-input type="text" [value]="config.getSelectedProfile().data?.email"></ion-input>
+	  </ion-item>
+  </ion-list>
+</ion-content>

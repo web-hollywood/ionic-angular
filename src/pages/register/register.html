@@ -1,0 +1,93 @@
+<ion-content [attr.noScroll]="true">
+ <div class="container">
+    <h1>Register for MoxieReader</h1>
+    <img src = "./assets/images/logo.png"  class="logo-image" />
+ </div>
+ <div class="div_tabs">
+	 <div id="tab1" [ngClass]="{'div_tab_sel':(tab_index == 0), 'div_tab':(tab_index == 1)}" (click)="click_tab_teacher()">Teacher</div>
+	 <div id="tab2" [ngClass]="{'div_tab_sel':(tab_index == 1), 'div_tab':(tab_index == 0)}" (click)="click_tab_parent()">Parent</div>
+ </div>
+ <form *ngIf="tab_index == 0">
+ <div class="inner-container">
+	<ion-list padding style="margin-bottom: 0px;">
+
+	  <ion-item>
+      <ion-select [(ngModel)]="user.salutation" placeholder="Salutation" [ngModelOptions]="{standalone: true}">
+        <ion-option value="Miss">Miss</ion-option>
+        <ion-option value="Ms">Ms</ion-option>
+        <ion-option value="Mrs">Mrs</ion-option>
+        <ion-option value="Mx">Mx</ion-option>
+        <ion-option value="Maser">Master</ion-option>
+        <ion-option value="Mr">Mr</ion-option>
+        <ion-option value="Dr">Dr</ion-option>
+        <ion-option value="Professor">Professor</ion-option>
+      </ion-select>
+	  </ion-item>	  
+
+	  <ion-item>
+	    <ion-input type="text" placeholder="First name" [(ngModel)]="user.name_first" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="text" placeholder="Last name" [(ngModel)]="user.name_last" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="email" placeholder="Email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+      <ion-item>
+	    <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="password_confirm" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	</ion-list>
+
+	<div padding>
+	  <button ion-button color="moxie" class="md-button" (click)="login()">Cancel</button>
+	  <button ion-button color="moxie" class="md-button" (click)="register()" style="float: right">Register</button>
+	</div>
+ </div>
+ </form>
+
+ <form *ngIf="tab_index == 1">
+	 <div class="inner-container">
+	 <ion-list padding style="margin-bottom: 44px;">
+
+	  <ion-item>
+	    <ion-input type="text" placeholder="First name" [(ngModel)]="userp.name_first" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="text" placeholder="Last name" [(ngModel)]="userp.name_last" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="email" placeholder="Email" [(ngModel)]="userp.email" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-input type="password" placeholder="Password" [(ngModel)]="userp.password" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+      <ion-item>
+	    <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="password_confirm_p" [ngModelOptions]="{standalone: true}"></ion-input>
+	  </ion-item>
+
+	</ion-list>
+
+	<div padding>
+	  <button ion-button color="moxie" class="md-button" (click)="login()">Cancel</button>
+	  <button ion-button color="moxie" class="md-button" (click)="register_parent()" style="float: right">Register</button>
+	</div>
+	 </div>
+ </form>
+
+ <div class = "spinner" *ngIf="loading" >
+	  <ion-spinner ></ion-spinner>
+	  <div class = "loadingText">{{loadingText}}</div>
+</div>
+</ion-content>

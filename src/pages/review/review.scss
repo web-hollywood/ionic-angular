@@ -1,0 +1,189 @@
+page-review {
+    #bt_update{
+        float: right;
+    }
+    .div_rating{
+        text-align: center;
+    }
+    ion-item.item{
+        max-width: 500px;
+        margin: auto;
+    }
+    .scroll-content{
+        // overflow-y: hidden;
+    }
+    .photoTitle{
+        color: #558dca;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+    }
+    ion-thumbnail {
+        padding: 20px;
+    }
+    ion-thumbnail img{
+        width: 100%;
+    }
+    textarea{
+        border: 1px solid #dedede;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        max-width: 500px;
+        width: 100%;
+        min-height: 150px;
+        margin: 10px auto;
+    }
+    textarea textarea{
+        height: 150px;
+    }
+    .bookcover img{
+        width: 100px;
+        height: 133px;
+        border-radius: 0px;
+    }
+    ion-item.item h2{
+        font-size: 16px;
+        white-space: normal;
+        font-weight: bold;
+    }
+
+    .reaction img{
+        width: 40px;
+        height: auto;
+    }
+    .reaction span{
+        display: block;
+    }
+    .div_reaction{
+        position: absolute;
+        background: #fff;
+        border-radius: 50px;
+        width: 286px;
+        height: 46px;
+        box-shadow: #ddd 0px 0px 3px;
+        padding: 3px 3px;
+        top: 178px;
+        left: calc(50% - 143px);
+        display: none;
+    }
+    .reaction_item{
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        margin: 2px;
+        text-align: center;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1); 
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1); 
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1); 
+        z-index: 1;
+    }
+    .reaction_item:hover{
+        z-index: 2;/*
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(2.5);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(2.5);   
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(2.5);
+        transition: all 200ms ease-in;
+        transform: scale(2.5);*/
+    }
+    .reaction_item img{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0px;
+        transition: all 200ms ease-in;
+    }
+    
+    .reaction_item div{
+        text-align: center;
+        font-size: 14px;
+        color: #558dca;
+        display: none;
+    }
+
+    ul.rating li ion-icon{
+        border-radius: 5px;
+        padding: 5px;
+        color: #fff;
+        background: #f2f2f2; /* Old browsers */
+        background: -moz-linear-gradient(top, #f2f2f2 0%, #dbdbdb 50%, #e2e2e2 100%); 
+        background: -webkit-linear-gradient(top, #f2f2f2 0%,#dbdbdb 50%,#e2e2e2 100%); 
+        background: linear-gradient(to bottom, #f2f2f2 0%,#dbdbdb 50%,#e2e2e2 100%); 
+    }
+    ul.rating li ion-icon.sel{
+        background: #fceabb;
+        background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f9ca52 100%);
+        background: -webkit-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f9ca52 100%);
+        background: linear-gradient(to bottom, #fceabb 0%, #fccd4d 50%, #f9ca52 100%);
+        
+    }
+    .reaction_item.web:hover img,
+    .reaction_item.sel img{
+        top: -55px;
+        transform: scale(5);
+        transition: all 200ms ease-in;
+    }
+    .reaction_item.sel {
+        z-index: 9999;
+    }
+    .overlay{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        left: 0;
+        top: 0;
+        z-index: 99;
+    }
+    .popup{
+        position: fixed;
+        width: 400px;
+        height: 600px;
+        left: calc(50% - 200px);
+        top: calc(50% - 286px);
+        background: #fff;
+        padding: 20px 10px;
+    }
+    .cls_popup{
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: #aaa;
+        color: #fff;
+        border-radius: 20px;
+        border: 1px solid #fff;
+        right: 1px;
+        top: 1px;
+        text-align: center;
+        padding-top: 2px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #cameraReader1{
+        text-align: center;
+    }
+    #cameraDiv1{
+        margin: 10px auto;
+    }
+    .cameraButton1,
+    .retakeCameraButton1,
+    .sendPhotoButton1{
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 320px) {
+    .reaction_item.web:hover img,
+    .reaction_item.sel img{
+        transform: scale(2.4);
+    }
+}

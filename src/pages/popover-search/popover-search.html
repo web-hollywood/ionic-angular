@@ -1,0 +1,14 @@
+<ion-list class='popover_search' no-lines>
+    <h3>{{title_text}}</h3>
+    <ion-item>
+        <ion-label>Popular only</ion-label>
+        <ion-toggle [(ngModel)]="config.quality"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>Grade only</ion-label>
+        <ion-toggle [(ngModel)]="config.grade"></ion-toggle>
+        <!-- <ion-select [(ngModel)]="config.grade">
+            <ion-option *ngFor="let item of list" value='item'>{{item}}</ion-option>
+        </ion-select> -->
+    </ion-item>
+</ion-list>

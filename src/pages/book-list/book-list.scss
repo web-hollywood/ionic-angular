@@ -1,0 +1,76 @@
+book-list-library{
+
+  ion-header{
+    border-bottom: none!important;
+    ion-searchbar{  
+    }
+    .autocomplete1 {
+      overflow-y: scroll;
+  	  margin-top: -5px;
+      max-height: 200px !important;
+      margin-left: 45px;
+			margin-right: 45px;
+      border: 1px solid darkgray;
+      .item-inner{
+        border: none!important;
+      }
+      ion-list {
+        margin-bottom: 0px!important;
+      }
+      ion-item.item-block {
+        height: 3rem;
+          min-height: 1.4rem!important;
+      }
+    }
+    .hideDiv1 {
+    	display: none !important;
+    }
+  }
+  .header::after {
+  }
+	ion-content{
+		.scroll-content{
+			div.autocomplete1 {
+ 				  box-shadow: 0px 1px 1px 1px #888888;
+ 				  background-color: white!important;
+				  border-radius: 3px!important;
+				  border: 1px solid #f7f7f7;
+				  width: 90%!important;
+				  position: absolute;
+				  top:0px;
+				  height: 200px;
+				  overflow-y: scroll;
+				  overflow-x: scroll;
+				  z-index: 999;
+				  ion-list {
+				    margin: 0px!important;
+				    width: 100%!important;
+				    width: inherit;
+				    ion-item {
+				      .item-inner{
+				      	border: none!important;
+				      }
+				      img {
+				        max-height: 2.5rem!important;
+				        width: auto;
+				        margin: auto;
+				        display: block;
+				      }
+				    }
+				    ion-item:hover {
+				      cursor: pointer;
+				      background: #f1f1f1!important;
+				    }
+				  }
+				.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ 				   		border-bottom: none!important;
+					}
+				}
+			padding-top: 0px!important;
+			padding-bottom: 0px!important;
+			.hideDiv {
+				display: none;
+			}
+		}
+	}
+}

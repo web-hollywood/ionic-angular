@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar color="moxie_{{config.mode}}">
+        <ion-title *ngIf="!cheer">Share book</ion-title>
+        <ion-title *ngIf="cheer">Choose your message</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="closeModal()">
+            Done
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="!second && !cheer">
+        <ion-list padding *ngFor="let group of readingGroups">
+            <ion-item no-lines text-wrap *ngIf="group.me && group.me=='1'">
+                <button full big round ion-button (click)="selectGroup(group)" color="moxie_class">{{group.title}}</button>
+            </ion-item>
+            <div class="swiper-container" [swiper]="config_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let item of group.students" tappable (click)="selectStudent(item)">
+                        <div class="div_student">
+                            <ion-avatar text-center>
+                                <img class="list-avatar" src="{{item.avatar}}">
+                            </ion-avatar>
+                            <span class="student-title-text">{{item.title}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+    </div>
+
+    <div text-center *ngIf="false">
+        <ion-label>Reason</ion-label>
+        <ion-textarea [(ngModel)]="reason" placeholder="Write a reason"></ion-textarea>
+    </div>
+
+    <ion-list text-center *ngIf="cheer || second">
+        <div class="div_student" *ngIf="selectedStudent && !cheer">
+            <ion-avatar text-center>
+                <img class="list-avatar" src="{{selectedStudent.avatar}}">
+            </ion-avatar>
+            <span class="student-title-text">Sharing with {{selectedStudent.title}}</span>
+        </div>
+        <div *ngIf="!selectedStudent && !cheer">
+            <div text-center>Group</div>
+        </div>
+        <div class="swiper-container" [swiper]="config_swiper1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of reasonList; let i = index;">
+                    <div tappable (click)="selectReason(i)" style="display: inline-block">
+                        <img class="reason_list" src="{{config.mainURL}}/event/reason/{{item.id}}/icon">
+                        <div>{{item.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </ion-list>
+
+</ion-content>

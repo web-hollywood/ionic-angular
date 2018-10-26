@@ -1,0 +1,57 @@
+page-add-class-library {
+
+    .list_item{
+        padding: 10px;
+        border: 1px solid #ddd;
+        position: relative;
+    }
+    .div_label{
+        background: #ffdb00;
+        font-size: 18px;
+        font-weight: bold;
+        padding:5px 0px 5px 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .div_buttons button.button{
+        display: inline-block;
+        margin: 0px 5px;
+        font-size: 16px;
+        /*padding: 0px 12px;*/
+    }
+    .div_buttons{
+        text-align: center;
+        padding: 5px;    
+    }
+    .div_list{
+        padding: 5px;
+        height: calc(50vh - 60px);
+        overflow-y: scroll;
+    }
+    .div_list ion-item{
+        position: relative;
+    }
+    .bt_remove{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        color: #93c83d;
+        padding: 10px;
+    }
+    .book_thumb{
+        display: inline-block;
+        width: 50px;
+        margin-right: 10px;
+        vertical-align: top;
+    }
+    .div_right{
+        vertical-align: top;
+        display: inline-block;
+        width: calc(100vw - 110px);
+    }
+    .title{
+        white-space: normal;
+        
+    }
+
+}

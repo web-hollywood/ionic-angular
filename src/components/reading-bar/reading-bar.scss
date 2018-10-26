@@ -1,0 +1,116 @@
+reading-bar{
+	width: 100%;
+
+	.div_reading,
+	.div_reading_history{
+		position: relative;
+		min-height: 20px;
+	}
+	.div_reading_history{
+	}
+	.div_reading_history div{
+		text-align: center;
+	}
+	.read_num {
+		font-weight: bold;
+	}
+	.sh_v{
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		width: 20px;
+		z-index: 9;
+	}
+	.div_reading_wrapper{
+		padding-top: 0px;
+	}
+	.sh_v img{
+		max-width: 100%;
+	}
+	.div_curpage{
+		margin-top: -20px;
+		position: relative;
+		font-size: 14px;
+	}
+	.div_curpage ion-input input{
+		background: #eee;
+		margin: 0;
+		padding: 10px 0px;
+		text-align: center;
+	}
+	.div_curpage button{
+		height: 36px;
+		padding: 0 10px;
+		margin: 0px;
+	}
+	.div_curpage ion-select{
+		max-width: 100%;
+	}
+	.div_reading_history ion-row ion-col{
+		padding: 5px 0px;
+	}
+	#sh_v{
+		transition: height 0.5s ease-out, opacity 0.5s ease;
+		-webkit-transition: height 0.5s ease-out, opacity 0.5s ease;
+		opacity: 0;
+		height: 0px;
+	}
+	#sh_v.fadeIn{
+		opacity: 1;
+		height: 150px;
+		height: auto;
+	}
+
+	ion-range .range-slider .range-bar{
+		top: 15px;
+		height: 13px;
+	}
+	ion-range .range-slider .range-bar-active{
+		background: #c9e28a;
+		background: -moz-linear-gradient(top, #c9e28a 0%, #ecffd3 23%, #a6cc7e 52%, #c9e28a 100%);
+		background: -webkit-linear-gradient(top, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		background: linear-gradient(to bottom, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9e28a', endColorstr='#c9e28a',GradientType=0 );
+		transition: all 0.5s;
+	}
+	ion-range.range.range-disabled{
+		opacity: 0.8;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	ion-range .range-slider .range-knob-handle{
+		display: none;
+	}
+	ion-range ion-label{
+		display: none;
+	}
+	.col-button{
+		text-align: center;
+	}
+	.col-button button{
+		font-size: 28px;
+	}
+	.rmin{
+		font-size: 22px;
+		margin: 0px;
+	}
+	#bt_add_page{
+		text-transform: none;
+    	border-radius: 8px;
+		font-family: "Source Sans Pro Light", sans-serif;
+	}
+	ion-row.row_history{
+		border-top: 1px solid #eee;
+	}
+	
+}
+@media screen and (max-width: 500px) {
+	reading-bar{
+		.col-button button{
+			font-size: 20px;
+		}
+		.rmin{
+			font-size: 18px;
+		}
+	}
+}

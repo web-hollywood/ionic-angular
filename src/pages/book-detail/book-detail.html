@@ -1,0 +1,151 @@
+<ion-header *ngIf="mode !== 'parent'">
+  <ion-navbar *ngIf="mode === 'teacher'" color="moxie_{{mode}}">
+    <div class="center-heading"><ion-title>Book Details</ion-title></div>
+  </ion-navbar>
+  <ion-navbar *ngIf="mode === 'class'"  color="moxie_{{mode}}">
+    <div class="center-heading"><ion-title>Book Details</ion-title></div>
+  </ion-navbar>
+</ion-header>
+<ion-header *ngIf="mode === 'parent' || isDone">
+  <ion-navbar color="moxie_{{mode}}" hideBackButton="true">
+    <div class="center-heading"><ion-title>Book Details</ion-title></div>
+		<ion-buttons end>
+    	<button icon-only ion-button (click)="done()">Done</button>
+    	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  padding>
+
+	<feed-item class='bookdetail' [data]="{book:book, supergenre:bookDetail.supergenre, series:bookDetail.series, lastread:data.lastread, stmode:mode, isedit: isEditReview, reviewlst: reviewList}" [isRefresh]="true" [showReviewArrow]="false" [visibleReview]="false" (editReview)="openReview(book)"></feed-item>
+<!--
+	<reading-bar class='bookdetail' [rbook]="rbook" isDownArrow="true" *ngIf="isCurrentReading"></reading-bar>
+<!--
+	<div class="div_reading" *ngIf="isCurrentReading">
+		<div class="sh_v" (click)="shReading()"><img src="assets/images/down-arrow-icon.png"></div>
+		<div class="div_reading_wrapper" [ngClass]="{'fadeIn':sh_v}" id="sh_v" >
+			<ion-item no-lines>
+				<ion-range disabled="true" [ngModel]="rbook.pages" min="0" [max]="rbook.book.pages">
+				</ion-range>
+			</ion-item>
+			<div class="div_curpage">
+				<ion-label text-right class="font-number">{{rbook.pages}}/{{rbook.book.pages}} pages</ion-label>
+				<ion-row>
+					<ion-col col-3>
+						<ion-select [(ngModel)]="rbook.minutes" *ngIf="isreadmin">
+							<ion-option value="" disabled selected>Minutes</ion-option>
+							<ion-option *ngFor="let item of readminAry; let i=index;" value="{{item.min}}">{{item.val}}</ion-option>
+						</ion-select>
+					</ion-col>
+					<ion-col col-3>
+							<ion-input type="tel" class="pagenumber font-number" [(ngModel)]="pageNum" #bookPages placeholder="Page No." (click)="checkFocus()"></ion-input>
+					</ion-col>
+					<ion-col col-6 text-right>
+						<button ion-button (click)="updateReading(rbook, bookPages.value, rbook.minutes)" color="moxie_class">Update</button>
+						<button ion-button (click)="finishReading(rbook)" color="moxie_class">Finish</button>
+					</ion-col>
+				</ion-row>
+			</div>
+			<div class="div_reading_history" *ngIf="isCurrentReading" (click)="history()">
+				<ion-row>
+					<ion-col col-3>
+						<div>Reads</div>
+						<div class='read_num'>{{evReading?.reads}}</div>
+					</ion-col>
+					<ion-col col-3>
+						<div>Avg page</div>
+						<div class='read_num'>{{evReading?.avg}}</div>
+					</ion-col>
+					<ion-col col-2>
+						<div>Min</div>
+						<div class='read_num'>{{evReading?.min}}</div>
+					</ion-col>
+					<ion-col col-4 style="padding: 5px 0px">
+						<div>Last</div>
+						<div class='read_num'>{{getDate(evReading?.last) | amTimeAgo}}</div>
+					</ion-col>
+				</ion-row>
+			</div>
+		</div>
+	</div>
+	-->
+	<button ion-button small (click)="shareBook()" *ngIf="mode !== 'parent'" [ngClass]="{'bt_selected':(shared)}" color="moxie_class">
+		<ion-icon name="ios-share-outline" padding-right></ion-icon>
+		<span *ngIf="!shared"> Share</span>
+		<span style = "font-weight: bold;font-size: 16px" *ngIf="shared">Shared</span>
+	</button>
+	<button ion-button small (click)="selectBook()" *ngIf="mode !== 'parent'" [ngClass]="{'bt_selected':(selected)}" color="moxie_class">
+		<ion-icon name="ios-checkbox-outline" padding-right></ion-icon> 
+		<span *ngIf="!selected"> Select</span>
+		<span style = "font-weight:  bold; font-size: 16px" *ngIf="selected">Selected</span>
+	</button>
+	<button ion-button small (click)="more()" class="bt_more" id="bt_more" *ngIf="mode === 'teacher'" color="moxie_class">More options<ion-icon name="arrow-down"></ion-icon></button>
+	<div id="div_more" *ngIf="showMore">
+		<button ion-button full small (click)="addToLibrary(1)" color="moxie_class">Add to {{classService.classData.class.title}}'s Library</button>
+		<!--
+		<button ion-button full small (click)="addToLibrary(2)" color="moxie_class">Book Review</button>
+		-->
+		<button ion-button full small (click)="addToLibrary(3)" color="moxie_class">Log For Read Aloud</button>
+		<button ion-button small (click)="logBook()" *ngIf="config.isOnStudentProfile" color="moxie_class">Log Book <span *ngIf="showLogBookAfterOneDay != null">&nbsp;again&nbsp;</span> for {{studentTitle}}</button>
+	</div>
+	<button ion-button small (click)="logBook()" *ngIf=" mode === 'class'" color="moxie_class">Log Book <span *ngIf="showLogBookAfterOneDay != null">&nbsp;again&nbsp;</span> for {{studentTitle}}</button>
+	<!--<div class="div_loghours" *ngIf="mode == 'class' && data.lastread">You read this book {{getDate(data.lastread) | amTimeAgo}} </div>-->
+	<ion-item text-wrap class="book_desc">
+
+		<span *ngIf="tub?.length > 0">
+			<h2>Tub:</h2>
+			<p>
+				<span *ngFor="let tub_obj of tub; let i = index;">
+					{{tub_obj?.title}}<span *ngIf="i != tub.length-1">, </span><span *ngIf="i == tub.length-1">.</span>
+				</span>
+			</p>
+		</span>
+		<span *ngIf="bookDetail.description">
+			<h2>Summary:</h2>
+
+			<p>{{bookDetail.description}}</p><br/>
+		</span>
+		<span >
+			<h2>Subjects:</h2>
+			<p>
+				<span *ngFor=" let item of genre">
+					{{bookDetail.genre[item]}},
+				</span>
+				<span *ngFor="let subject of bookDetail.subjects?.bisac; let i = index;">
+					{{subject}}<span *ngIf="i !=  bookDetail.subjects.bisac.length - 1">, </span><span *ngIf="i ==  bookDetail.subjects.bisac.length - 1">.</span>
+				</span>
+			</p>
+			</span>
+		<br/>
+
+		<span *ngIf="bookDetail.awards?.length > 0">
+			<h2>Awards:</h2>
+			<p>
+				<span *ngFor="let award of bookDetail.awards; let i = index ">
+					<div *ngIf="i < 4">{{award.type}},{{award.closingYear}},{{award.name}}<br/></div>
+				</span>
+			</p><br/>
+		</span>
+
+		<span *ngIf="reviewList.length!=0">
+			<h2>Reviews:</h2>
+			<div  class="swiper-container review-swiper" [swiper]="config_swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" *ngFor="let item of reviewList; let i = index;">
+						<review-card [data]="item" [showForceItem]='true' (selectReview)="selectReview(item)" (openFile)="openFile($event)" [studenttitle]="item.student ? item.student.title : 'teacher'"></review-card>
+					</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+ 				<div class="swiper-button-next"></div>
+			</div>
+		</span>
+		
+	</ion-item>
+
+	<button ion-button disabled full color="moxie" class="similar-button">Similar Books</button>
+
+
+	<ion-list>
+		<feed-item [data]="{book:book}" *ngFor="let book of similarBooks" (onClick)="openDetail($event)"></feed-item>
+	</ion-list>
+</ion-content>

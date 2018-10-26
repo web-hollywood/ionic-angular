@@ -1,0 +1,50 @@
+page-my-profile {
+	ion-header {
+		ion-navbar {
+				ion-buttons span.button-inner {
+					background-color: transparent !important;
+					position: absolute;
+					top: 3px;
+					right: 15px;
+			}
+		}
+	}
+	ion-content{
+		.scroll-content{
+			margin-top: 0px !important;
+		}
+		margin-top: 64px !important;
+		height: calc(100% - 64px);
+		ion-list{
+			margin-top: 10px!important;
+			ion-item{
+				ion-label{
+					color: black!important;
+					font-size: 2rem!important;
+				}
+				ion-input{
+					font-size: 1.3rem;
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+	.profile-img {
+		display:block;
+		margin:0 auto !important;
+		width: 15%;
+		height: 15%;
+		border-radius: 30px;
+		padding: 1px;
+		border: 2px solid rgb(220,220,220);
+	}
+	.profile-image {
+		width: 8%;
+		height: 85%;
+	    position: absolute;
+	    top: 5px;
+	    right: 10px;
+	    
+	}
+	
+}

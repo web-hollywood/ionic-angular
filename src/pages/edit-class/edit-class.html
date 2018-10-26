@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Edit Class</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="slideHome()" *ngIf="currentIndex !== 0">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()" *ngIf="currentIndex === 0">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-navbar color="navbarYellow">
+    <ion-title>{{data.class?.title}} Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="moxie-main-text" padding>
+	<ion-slides (ionSlideDidChange)="onSlideChange()">
+		<ion-slide>
+			<ion-list>
+				<ion-item (click)="switchSlide(1)" *ngIf="false">
+					<ion-icon name="settings" item-left></ion-icon>
+					Class Information
+          <ion-icon class="push-icon" name="ios-arrow-forward-outline"></ion-icon>
+				</ion-item>
+				<ion-item (click)="switchSlide(2)">
+					<ion-icon name="unlock" item-left></ion-icon>
+					Change PIN
+          <ion-icon class="push-icon" name="ios-arrow-forward-outline"></ion-icon>
+				</ion-item>
+				<ion-item (click)="switchSlide(3)" *ngIf="false">
+					<ion-icon name="ios-people-outline" item-left></ion-icon>
+					Reading Groups
+          <ion-icon class="push-icon" name="ios-arrow-forward-outline"></ion-icon>
+				</ion-item>
+				<ion-item>
+				    <ion-label>Students add to class library</ion-label>
+				    <ion-toggle (ionChange)="addStudentChanged()" [(ngModel)]="addLibrary"></ion-toggle>
+			  	</ion-item>
+
+			    <ion-item>
+				    <ion-label>Record Minutes Read </ion-label>
+				    <ion-toggle (ionChange)="minutesChanged()" [(ngModel)]="recordMinutes"></ion-toggle>
+			    </ion-item>
+
+			    <ion-item>
+				    <ion-label>Require Student PIN</ion-label>
+				    <ion-toggle (ionChange)="pinRequirementChanged()" [(ngModel)]="pinRequirement"></ion-toggle>
+					</ion-item>
+					
+					<ion-item>
+							<ion-label>Disable Book Reviews</ion-label>
+							<ion-toggle (ionChange)="pinBookReviewChanged()" [(ngModel)]="bookReview"></ion-toggle>
+					</ion-item>
+			</ion-list>
+		</ion-slide>
+
+		<!-- Class Information Slide -->
+		<ion-slide>
+			<ion-list>
+				<ion-item>
+				    <ion-label fixed>Class Name</ion-label>
+				    <ion-input type="text" #classTitle [value]="data.class.title"></ion-input>
+				</ion-item>
+				<ion-item>
+				    <ion-label>Class Grade</ion-label>
+				    <ion-select [(ngModel)]="data.class.grade">
+				    	<ion-option value="">Pre K</ion-option>
+				   		<ion-option value="K">K</ion-option>
+				   		<ion-option value="1">1</ion-option>
+				    	<ion-option value="2">2</ion-option>
+				    	<ion-option value="3">3</ion-option>
+				    	<ion-option value="4">4</ion-option>
+				    	<ion-option value="5">5</ion-option>
+				    	<ion-option value="6">6</ion-option>
+				    	<ion-option value="7">7</ion-option>
+				    	<ion-option value="8">8</ion-option>
+				    	<ion-option value="9">9</ion-option>
+				    	<ion-option value="10">10</ion-option>
+				    	<ion-option value="11">11</ion-option>
+				    	<ion-option value="12">12</ion-option>
+				    	<ion-option value="">No Grade</ion-option>
+				    </ion-select>
+  				</ion-item>
+  				<ion-item>
+  					<button ion-button full large round color="primary" (click)="updateClass(classTitle.value)">Update</button>
+  				</ion-item>
+			</ion-list>
+		</ion-slide>
+
+		<!-- Pin Change -->
+		<ion-slide>
+			<ion-item>
+				<ion-label fixed>New PIN</ion-label>
+				<ion-input max=4 maxlength="4" type="tel" [(ngModel)]="pin" placeholder="Enter New PIN"></ion-input>
+			</ion-item>
+			<ion-item>
+				<button ion-button full large round color="primary" (click)="updatePin()">Update</button>
+  			</ion-item>
+		</ion-slide>
+
+    <!-- Reading Groups -->
+    <ion-slide>
+      <ion-scroll scrollY="true">
+      <ion-list>
+        <ion-list-header>
+        <div class="reading-group-header-container">
+          <div>Reading Group</div>
+          <button round ion-button (click)="toggleReorderList()">{{ reorderEnabled ? "Done" : "Reorder" }}</button>
+        </div>
+        </ion-list-header>
+        <ion-item-group reorder="{{ reorderEnabled }}" (ionItemReorder)="reorderItems($event)">
+          <ion-item *ngFor="let group of data.readinggroups">
+            <ion-input type="text" [value]="group.title" (input)="group.title = $event.target.value" placeholder="Enter reading group name"></ion-input>
+            <ion-icon  *ngIf="!reorderEnabled && !group.count" item-right (click)="showConfirmRemove(group)" name="remove-circle"></ion-icon>
+          </ion-item>
+        </ion-item-group>
+        <ion-item class="moxie-main-text" *ngIf="!reorderEnabled">Add new reading group<ion-icon item-right (click)="addReadingGroup()" name="md-add-circle"></ion-icon></ion-item>
+      </ion-list>
+        </ion-scroll>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

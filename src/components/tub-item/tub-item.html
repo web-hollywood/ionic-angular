@@ -1,0 +1,38 @@
+<ion-item class="titem" text-wrap *ngIf="data && data.book">
+  <img class="dropdown"  icon-only (click)="presentPopover($event, data.book)" src="assets/images/dropdown.png" />
+  
+  <ion-thumbnail (click)="bookClick(data.book)" item-left>
+  		<img class="book-cover" src="{{config.mainURL}}/book/{{data.book?.id}}/cover">
+	</ion-thumbnail>
+
+	<ion-item *ngIf="advance && data.student" no-padding >
+		<ion-avatar (click)="studentClick(data.student)" item-left >
+			<img src="{{config.mainURL}}/class/{{config.class_id}}/student/{{data.student.id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}"/>
+		</ion-avatar>
+		<h2>{{data.student.title}}</h2> {{data.title}}
+		<h4>{{getDate(data.datetime) | amTimeAgo}}</h4>
+	</ion-item>
+  	<h2>
+      {{data.book.title}}
+    </h2>
+    <h4 *ngIf="!data.student && data.datetime">{{getDate(data.datetime) | amTimeAgo}}</h4>
+    <h3>by {{(data.book?.contributors[0])?.name_display}}</h3>
+    <span  *ngIf="is_showable(data.book)">
+    <ion-badge color="moxie" >{{data.book?.primary_genre}}</ion-badge>
+    </span>
+    <ion-badge color="moxie" class='captalize'>{{data.book?.supergenre}}</ion-badge>
+    <ion-row>
+    	<ion-badge color="light">
+			{{data.book.grade?.min}}
+			-
+			{{data.book.grade?.max}}
+		</ion-badge>
+    	<ion-badge color="light">{{data.book?.readinglevel}}</ion-badge>
+    	<ion-badge color="light">{{data.book.readingprogram.lexile?.textmeasure}}</ion-badge>
+    	<ion-badge color="light">{{data.book.readingprogram.acceleratedReader?.readingLevel}}</ion-badge>
+    	<span class="no-padding push-b-3"><span class = "bold-span">Pages</span>: <span class="font-number"> {{data.book?.pages}}</span></span>
+    </ion-row>
+
+    <rating  [(ngModel)]="data.book.rating" readOnly="true"></rating>
+</ion-item>
+

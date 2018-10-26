@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar color="moxie_{{config.mode}}" hideBackButton="true">
+        <div *ngIf="!readonly" class="center-heading">
+            <ion-title>{{title}} a Review</ion-title>
+        </div>
+        <div *ngIf="readonly" class="center-heading">
+            <ion-title>Show a Review</ion-title>
+        </div>
+        <ion-buttons *ngIf="!readonly">
+            <button icon-only ion-button (click)="done()">Cancel</button>
+        </ion-buttons>
+        <ion-buttons end *ngIf="!readonly">
+            <button icon-only ion-button (click)="save()">Save</button>
+        </ion-buttons>
+        <ion-buttons end *ngIf="readonly">
+            <button icon-only ion-button (click)="done()">Done</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+    <div class="overlay" id="popup" *ngIf="istake">
+        <div class="popup" id="popup_takephoto">
+            <div class="cls_popup" (click)="returnTake();">X</div>
+            <div text-center>Take Picture</div>
+            <div text-center><small></small></div>
+            <div id="cameraReader1"></div>
+        </div>
+    </div>
+
+    <ion-item no-padding no-lines>
+        <ion-avatar class="bookcover" item-left>
+            <img src="{{config.mainURL}}/book/{{book.id}}/cover" />
+        </ion-avatar>
+        <h2>{{book.title}}</h2>
+    </ion-item>
+
+    <h2 text-center *ngIf="false">How would your rating?</h2>
+    <div class="div_rating">
+        <rating *ngIf="!readonly" [(ngModel)]="rating" class="mrating" (ngModelChange)="starClicked($event)"></rating>
+        <rating *ngIf="readonly" [(ngModel)]="rating" class="mrating" readOnly="true" (ngModelChange)="starClicked($event)"></rating>
+    </div>
+
+    <h2 text-center *ngIf="false">How would your like?</h2>
+    <div class="reaction" (click)="openReaction()" id="reaction">
+        <img src="assets/images/reaction_happy.png" />
+        <span>happy</span>
+    </div>
+    <div class="div_reaction" id="div_reaction">
+        <div *ngFor="let icon of ricon; let i = index;" class='reaction_item' id='ritem{{i}}' (click)="click_reaction(i)">
+            <div>{{icon.text}}</div>
+            <img src="assets/images/reaction_{{icon.icon}}.png" />
+        </div>
+    </div>
+    <!-- <ion-textarea [(ngModel)]="review" placeholder="Write a review"></ion-textarea> -->
+    <textarea *ngIf="!readonly" [(ngModel)]="review" placeholder="Write a review"></textarea>
+    <textarea *ngIf="readonly" [(ngModel)]="review" readonly="true" placeholder="Write a review"></textarea>
+    <ion-buttons text-center *ngIf="!readonly && reviewList.length > 0">
+        <button ion-button color="light" (click)="deleteReview()">Delete</button>
+    </ion-buttons>
+    <div>
+        <input type="file" name="file" id="file" (change)="setFileImage($event)" #fileInp style="display:none" />
+        <div *ngIf="!readonly" style="text-align: left;">
+            <span class="photoTitle" (click)="addPhoto()">Take photo</span>&nbsp;Or&nbsp;
+            <span class="photoTitle" (click)="addFile()">From file</span>
+        </div>
+        <div *ngIf="!readonly && photoChangeTitle == 'Change photo'" style="text-align: right;">
+            <span class="photoTitle" (click)="removePhoto()">Remove Picture</span>
+        </div>
+        <div style="clear: both"></div>
+        <ion-thumbnail *ngIf="image && image != ''">
+            <img src="{{image}}" />
+        </ion-thumbnail>
+    </div>
+</ion-content>

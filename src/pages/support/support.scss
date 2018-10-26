@@ -1,0 +1,22 @@
+page-support {
+
+	ion-content{
+		.scroll-content{
+			padding: 8px!important;
+			ion-list{
+				.button{
+					border-radius: 10px!important;
+					height: 9rem!important;
+					white-space: normal;
+					max-width: 600px;
+    				margin: 4px auto;
+					.button-inner p{
+						font-size: 2rem;
+						text-transform: capitalize;
+					}
+				}
+			}
+
+		}
+	}
+}

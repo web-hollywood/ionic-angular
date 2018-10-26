@@ -1,0 +1,53 @@
+page-share-book {
+    .div_student{
+        text-align: center;
+        display: inline-block;
+        margin: 5px 10px;
+        ion-avatar{
+            .list-avatar{
+                max-height: 55px !important;
+		        margin: 0 auto;
+            }
+        }
+        .student-title-text{
+            @include moxie-main-font-light(16px);
+            font-style: italic;
+        }
+    }
+    .item-md button.item-button{
+        padding: 10px;
+        font-size: 1.6rem;
+        height: 40px;
+    }
+    img.reason_list{
+        width: 100%;
+        max-width: 60px;
+    }
+    .swiper-slide {
+        padding: 3px 20px;
+    }
+    .swiper-slide > div{
+        width: 100%;
+    }
+    textarea{
+        border: 1px solid #dedede;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        max-width: 500px;
+        width: 100%;
+        min-height: 60px;
+        margin: 10px auto;
+    }
+    textarea textarea{
+        height: 150px;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        top: 35px;
+    }
+    @media (max-width: 500px) {
+        .swiper-slide div{
+            font-size: 14px;
+        }
+    }
+}

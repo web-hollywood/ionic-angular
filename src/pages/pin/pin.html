@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar color="moxie_{{config.mode}}">
+  	<ion-title *ngIf="pinMode == 'teacherPin'" text-center>Enter PIN</ion-title>
+    <ion-title *ngIf="pinMode == 'studentPin'" text-center>Enter PIN for {{ studentName }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item no-lines>
+	    <ion-label color="moxie">PIN</ion-label>
+	    <ion-input max=4 maxlength="4" readonly="true" type="password" placeholder="Enter your PIN" [value]="pin" style="font-size:20px" ></ion-input>
+  	</ion-item>
+	<ion-item no-lines>
+		<ion-label *ngIf="checkForDefaultPin">Your default PIN is 0000, please go to class settings to change</ion-label>
+		<ion-label *ngIf="!checkForStudentPin">If you forget your PIN ask the teacher to use theirs to override</ion-label>
+	</ion-item>
+
+	<ion-digit-keyboard
+	    [leftActionOptions]="keyboardSettings.leftActionOptions"
+	    [rightActionOptions]="keyboardSettings.rightActionOptions"
+	    [roundButtons]="keyboardSettings.roundButtons"
+	    [showLetters]="keyboardSettings.showLetters"
+	    [swipeToHide]="keyboardSettings.swipeToHide"
+	    [theme]="keyboardSettings.theme">
+	    <ion-toolbar no-border-bottom>
+	        <ion-buttons start>
+	            <button ion-button (click)="cancel()">Cancel</button>
+	        </ion-buttons>
+	    </ion-toolbar>
+	</ion-digit-keyboard>
+</ion-content>

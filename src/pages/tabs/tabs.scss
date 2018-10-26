@@ -1,0 +1,33 @@
+#tab-t0-3,
+#tab-t1-3,
+#tab-t2-3,
+ion-tabs a:nth-child(4) {
+	ion-icon {
+		width: 1em!important;
+		img{
+				width: 1em!important;
+				height: 1em!important;
+			}
+	}
+}
+
+.none-tab {
+	.scroll-content {
+		margin-bottom: 0 !important;
+	}
+}
+ion-tabs ion-tab{
+	transition: all ease-out 0.3s;
+}
+
+@media (min-width: 768px) {
+	.tabbar{
+		a.tab-button{
+			width: 150px;
+			max-width: 150px;
+		}
+		a:first-child{
+			margin-left: calc(50% - 300px);
+		}
+	}
+}

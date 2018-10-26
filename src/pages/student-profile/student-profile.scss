@@ -1,0 +1,226 @@
+page-student-profile {
+	div.scroll-content{
+		margin-top: 56px;
+	}
+	.profile-pic img {
+		height:80px;
+		width:80px;
+	}
+
+	ion-slides.recommendSlider .slide-zoom, ion-slides.recommendSlider  {
+		height:200px !important;
+	}
+
+	ion-slides.currentSlider .slide-zoom, ion-slides.currentSlider  {
+		height: auto;
+	}
+	.swiper-pagination {
+		display: none;
+	}
+	.row_lb{
+		color: #aaa;
+		font-size: 16px;
+	}
+	.row_val{
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.row_val .col{
+		padding: 0px;
+	}
+	.progressChart_s{
+		text-align: left !important;
+		margin-top: 10px;
+	}
+	.studentAlert{
+		padding-left: 0px;
+		font-size: 14px;
+	}
+	.hunt_img{
+		width: 36px;
+		height: auto;
+	}
+	.div_hunt{
+		width: calc(100% - 36px);
+		padding-left: 15px;
+		float: right;
+		white-space: normal;
+		font-size: 14px;
+	}
+	
+	.lb_schalleng {
+ 		margin-bottom: 0px;
+ 		padding-left: 30px;
+ 		color: gray;
+ 		font-size: 18px;
+ 	}
+
+	ion-list feed-item ion-item.item{
+		padding-left: 0px;
+	}
+	feed-item ion-item ion-label .dropdown .item-icon{
+		padding-top: 10px;
+		padding-right: 0px;
+	}
+	feed-item ion-item ion-label .dropdown{
+		margin-right: 0px;
+	}
+	ion-range .range-slider .range-bar{
+		top: 15px;
+		height: 13px;
+	}
+	ion-range .range-slider .range-bar-active{
+		background: #c9e28a;
+		background: -moz-linear-gradient(top, #c9e28a 0%, #ecffd3 23%, #a6cc7e 52%, #c9e28a 100%);
+		background: -webkit-linear-gradient(top, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		background: linear-gradient(to bottom, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9e28a', endColorstr='#c9e28a',GradientType=0 );
+		transition: all 0.5s;
+	}
+	ion-range.range.range-disabled{
+		opacity: 0.8;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	ion-range .range-slider .range-knob-handle{
+		display: none;
+	}
+	ion-range ion-label{
+		display: none;
+	}
+	ion-segment.segment .segment-button,
+	ion-segment.segment .segment-button:hover:not(.segment-activated){
+		background: #93c83d;
+		color: #fff;
+		border-color: #93c83d;
+		font-size: 1.3rem;
+	}
+	ion-segment.segment .segment-button.segment-activated{
+		border-color: #558dca; 
+		background: #558dca;
+		transition: right .5s linear;
+	}
+	ion-input.pagenumber{
+		color: #555;
+	}
+	
+	.div_sec{
+		height: 30px;
+		border-bottom: 2px solid #ccc;
+		margin-bottom: 10px;
+	}
+	feed-item ion-item .grid{
+		padding: 0;
+	}
+	feed-item ion-item .avatar-scroller ion-avatar img {
+		width: 30px;
+		height: 30px;
+	}
+	div.space{
+		height: 50px;
+	}
+	.div_currentSlider,
+	.div_recommendSlider{
+		position: relative;
+	}
+	.bt_back,
+	.bt_next{
+		position: absolute;
+		top: -20px;
+		color: #333;
+		z-index: 9;
+		font-size: 30px;
+	}
+	.bt_prev{
+		left: 0px;
+	}
+	.bt_next{
+		right: 0px;
+	}
+	.font-number{
+		//font-family: $moxie-font-sourcesans-bold;
+	}
+  /* This causes the titles to not aligned to the center, what was it trying to do?
+	ion-title.title-md{
+		position: relative;
+		top: auto;
+		bottom: auto;
+		right: auto;
+		left: auto;
+	}
+	*/
+	.nofeed{
+		min-height: 180px;
+		text-align: center;
+	}
+	.gaugeChart,
+	.growthChart{
+		min-height: 230px;
+	}
+	.pages_sec{
+		min-height: 80px;
+	}
+	.div_cog{
+		position: absolute;
+		top: 8px;
+		right: 0px;
+		color: #558DCA;
+		font-size: 20px;
+	}
+
+}
+.col-right-sprofile{
+	position: relative;
+}
+button.dropdown{
+	position: absolute;
+    top: 0px;
+    right: 0px;
+	z-index: 99;
+    width: 40px;
+}
+@media (min-width: 769px) {
+
+page-student-profile {
+	.gaugeChart,
+	.growthChart{
+		max-width: 80%;
+		margin: 0px auto;
+	}
+	.col-left-sprofile{
+		width: 48%;
+		float: left;
+		padding-bottom: 80px;
+	}
+	.col-right-sprofile{
+		width: 48%;
+		float: right;
+	}
+	ion-slides.currentSlider .slide-zoom, ion-slides.currentSlider  {
+		height: 350px;
+	}
+	.profile-pic img{
+		width: 120px;
+		height: auto;
+	}
+	.item-md h2{
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	.item-md h3{
+		font-size: 1.8rem;
+	}
+	.progressChart{
+		text-align: left !important;
+	}
+	ion-segment.segment .segment-button, ion-segment.segment .segment-button:hover:not(.segment-activated){
+		font-size: 1.5rem;
+	}
+	.div_hunt{
+		font-size: 16px;
+	}
+	ion-title .toolbar-title{
+	}
+}
+
+}

@@ -1,0 +1,15 @@
+page-share-reading-group {
+
+	ion-content {
+		.scroll-content {
+			.button-inner {
+				p{
+					text-transform: lowercase;
+				}
+				p:first-letter {
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}

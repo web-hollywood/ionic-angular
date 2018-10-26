@@ -1,0 +1,51 @@
+page-library {
+	ion-content{
+		.scroll-content{
+			padding: 8px!important;
+		
+				.button{
+					border-radius: 10px!important;
+					height: 9rem!important;
+					.button-inner {
+						font-size: 2rem;
+						text-transform: capitalize;
+					}
+					max-width: 600px;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.div_book_review {
+					max-width: 100%;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				ion-segment.segment .segment-button,
+				ion-segment.segment .segment-button:hover:not(.segment-activated){
+					background: #93c83d;
+					color: #fff;
+					border-color: #93c83d;
+					font-size: 1.3rem;
+				}
+				ion-segment.segment .segment-button.segment-activated{
+					border-color: #558dca; 
+					background: #558dca;
+					transition: right .5s linear;
+				}
+
+		}
+	}
+	.col-right-sprofile{
+		position: relative;
+	}
+	@media (min-width: 769px) {
+		.col-left-sprofile{
+			width: 48%;
+			float: left;
+			padding-bottom: 80px;
+		}
+		.col-right-sprofile{
+			width: 48%;
+			float: right;
+		}
+	}
+}

@@ -1,0 +1,5 @@
+<page-my-profile *ngIf="mode === 'teacher'">>
+</page-my-profile>
+
+<page-student-profile *ngIf="mode === 'class'" [studentID]="config.student_id">
+</page-student-profile>

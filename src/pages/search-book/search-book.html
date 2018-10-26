@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+		<ion-title>Search All Books</ion-title>
+		<!-- <ion-buttons end>
+			<button ion-button (click)="openPopover($event)">
+				<ion-icon name="settings"></ion-icon>
+			</button>
+		</ion-buttons> -->
+  </ion-navbar>
+  
+  <ion-navbar color="moxie_{{config.mode}}"> 
+  	<ion-searchbar #q  debounce="400" [(ngModel)]="searchValue" (keyup.enter)="getSearchBook(q.value)"                       	(search)="searchBook($event.target.value)" (ionInput)="searchBook($event.target.value)" placeholder="{{config.searchPlaceholder}}"  (ionBlur)="checkBlur()" (ionFocus)="searchBook('')" autocomplete="on">
+  	</ion-searchbar>
+  </ion-navbar>
+	<div id="autocomplete2" class= "autocomplete2" *ngIf = "view_Flag && (((search_flag == 'history') && (search_items.length > 0)) || ((search_flag == 'auto_complete') ))">
+		<ion-list *ngIf = "search_flag == 'history'">
+			<ion-item *ngFor="let item of search_items" (click)="itemClick(item.data?.q)">
+			 	{{ item.data?.q }}
+			</ion-item>
+		</ion-list>
+		<ion-list *ngIf = "search_flag == 'auto_complete'">
+			<ion-item *ngFor="let item of auto_complete_items.authors" (click)="itemClick(item)">
+			 	{{ item }}   <h3 style="float: right;font-style: italic;">Authors</h3>
+			</ion-item>
+			<ion-item *ngFor="let item of auto_complete_items.series" (click)="itemClick(item)">
+			 	{{ item }}	 <h3 style="float: right;font-style: italic;">series</h3>
+			</ion-item>
+			<ion-item *ngFor="let item of auto_complete_items.title" (click)="itemClick(item)">
+			 	{{ item }}   <h3 style="float: right;font-style: italic;">title</h3>
+			</ion-item>
+		</ion-list>
+	</div>
+  </ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<ion-item text-center>
+			<ion-label>Browse</ion-label>
+		</ion-item>
+		<ion-item>
+			<button ion-button full round (click) = "openGenre('all')" color="moxie_class">ALL BOOKS</button>
+		</ion-item>
+		<ion-item>
+			<button ion-button  round (click) = "openGenre('fic')" color="moxie_class">FICTION</button>
+			<button ion-button  round (click) = "openGenre('non')" color="moxie_class">NONFICTION</button>
+		</ion-item>
+	</ion-list>
+</ion-content>

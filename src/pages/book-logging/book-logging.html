@@ -1,0 +1,46 @@
+<ion-header>	
+  <ion-navbar hideBackButton color="moxie_{{mode}}">
+    <ion-title>Book Logging</ion-title>
+    <ion-buttons end>
+    	<button ion-button (click)="onCancel();">Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list-header color="light" text-center class="book_title" id="book_title">
+    	Adding book to {{student_title}}'s Log
+  	</ion-list-header>
+  	<feed-item [data]="{book:book}" [visibleReview]="false"></feed-item>
+
+  	<ion-grid>
+  		<ion-row>
+  			<ion-col>
+  				<button *ngIf="!isCurrent" ion-button full round color="moxie" class="mbutton" (click)="fireEvent('current')">Currently Reading</button>
+  			</ion-col>
+  			<ion-col>
+  				<button ion-button full round color="moxie" class="mbutton"  (click)="fireEvent('log')">Finished Reading</button>
+  			</ion-col>
+  		</ion-row>
+
+		<ion-row>
+			<reading-bar [rbook]="rbook" [fireButton]="fireButton" classId="{{classId}}" studentId="{{studentId}}" [shv]="true" [isreadmin]="isreadmin" *ngIf="isCurrentReading && rbook" (updateReadingCallback)="onUpdate()" isbooklogging="true"></reading-bar>
+		</ion-row>
+  		
+  		<ion-row *ngIf="false">
+  			<ion-col text-center>
+				<rating [(ngModel)]="rating" class="mrating" (ngModelChange)="starClicked($event)"></rating>
+			</ion-col>
+  		</ion-row>
+  		
+  		<ion-row *ngIf="!isCurrent">
+  			<ion-col>
+  				<button ion-button full round color="moxie"  class="mbutton" (click)="fireEvent('history')">Read before</button>
+  			</ion-col>
+  			<ion-col>
+  				<button ion-button full round color="moxie" class="mbutton" (click)="readingResponse()" >Reading Response</button>
+  			</ion-col>
+  		</ion-row>
+  	</ion-grid>
+</ion-content>

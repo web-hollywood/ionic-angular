@@ -1,0 +1,13 @@
+<ion-tabs id="tab_normal" color="moxie_{{config.mode}}" (ionChange)="transition($event)" [selectedIndex]="tabIndex" #myTabs *ngIf="config.mode !== 'parent' && !(config.pstudent)"
+  [ngClass]="{'none-tab': hideTab}">
+  <ion-tab [root]="tab1Root" tabTitle="{{getTitle()}}" tabIcon="ios-people-outline" [rootParams]="classParams"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Scan" tabIcon="ios-barcode-outline" aria-hidden="false"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Books" tabIcon="ios-book-outline"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Profile" tabIcon="customicon1" [rootParams]="profileParams"></ion-tab>
+</ion-tabs>
+<ion-tabs id="tab_parent" color="moxie_{{config.mode}}" (ionChange)="transition($event)" [selectedIndex]="tabIndex" #myTabs *ngIf="config.mode === 'parent' || config.pstudent">
+  <ion-tab [root]="tab11Root" tabTitle="Home" tabIcon="ios-people-outline" [rootParams]="classParams"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Scan" tabIcon="ios-barcode-outline" aria-hidden="false"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Books" tabIcon="ios-book-outline"></ion-tab>
+  <ion-tab [root]="tab12Root" tabTitle="Profile" tabIcon="customicon1" [rootParams]="profileParams"></ion-tab>
+</ion-tabs>

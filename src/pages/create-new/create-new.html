@@ -1,0 +1,44 @@
+<ion-content padding>
+    <h2 class='top_title'>Create Book</h2>
+    <div>
+        <img class="book-cover" src="{{coverUrl}}" />
+        <div class='float-left'>
+            <!-- <h2 class="h2_book_title">Enter Title</h2> -->
+            <ion-input [(ngModel)]="title" disabled="{{navParams.get('title') !=''}}" placeholder="Enter Title"></ion-input>
+
+            <!-- <h3 class="book_author">Enter Author</h3> -->
+            <ion-input [(ngModel)]="author" disabled="{{navParams.get('author') !=''}}" placeholder="Enter Author"></ion-input>
+
+            <!-- <h3 class="book_pages">Enter book length</h3> -->
+            <ion-input [(ngModel)]="pages" tyle='tel' placeholder="Enter book length"></ion-input>
+            
+            <h3 class="book_pages" *ngIf="rating">Rating</h3>
+            <rating *ngIf="rating" [(ngModel)]="rating" readOnly="true"></rating>
+            
+            <h3 class="book_pages" *ngIf="grade">Grade</h3>
+            <ion-input *ngIf="grade" [(ngModel)]="grade"></ion-input>
+
+            <ion-list class='radio_group' radio-group [(ngModel)]="gener">
+                <!-- <ion-list-header>
+                    Supergenre
+                </ion-list-header> -->
+                <ion-item>
+                    <ion-label item-right>Fiction</ion-label>
+                    <ion-radio item-left value="fiction"></ion-radio>
+                </ion-item>              
+                <ion-item>
+                    <ion-label>Non Fiction</ion-label>
+                    <ion-radio item-left value="nofiction"></ion-radio>
+                </ion-item>
+            </ion-list>
+            <!-- <h3 class="book_pages">Supergener</h3>
+            <ion-select [(ngModel)]="gener">
+                <ion-option *ngFor="let item of all_genre_list" value="{{item.id}}">{{item.title}}</ion-option>
+            </ion-select> -->
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <button ion-button (click)="cancel()">Cancel</button>
+    <button ion-button (click)="ok()" style='float: right'>Looks good</button>
+</ion-content>

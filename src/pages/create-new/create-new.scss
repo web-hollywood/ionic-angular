@@ -1,0 +1,79 @@
+page-create-new {
+    h2.top_title {
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        padding-top: 20px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    h2.h2_book_title{
+        font-size: 20px;
+        margin-bottom: 0px;
+        text-align: left;
+    }
+    h2, h3{
+        font-size: 16px;
+        margin-bottom: 0px;
+        color: #aaa;
+    }
+    img.book-cover{
+        float: left;
+        width: 128px;
+    }
+    div.float-left{
+        float: left;
+        width: calc(100% - 146px);
+        margin-left: 16px;
+    }
+    ion-input{
+        font-size: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    ion-input input{
+        margin-bottom: 3px;
+    }
+    ion-select {
+        border: 1px solid #ccc;
+        padding: 6px 10px;
+    }
+    .list-header-md {
+        padding-left: 0px;
+        font-size: 1.6rem;
+        margin-bottom: 0;
+    }
+    .radio_group ion-item {
+        max-width: 128px;
+        display: block;
+        float: left;
+        border: 0px;
+        margin-bottom: 20px;
+        margin-right: 30px;
+    }
+    .radio_group ion-item.item-md .radio-md{
+        margin: 0;
+    }
+    ion-list.radio_group {
+        padding-top: 20px;
+    }
+
+    @media (max-width: 500px) {
+        .radio_group ion-item {
+            max-width: 98px;
+            margin-bottom: 20px;
+            margin-right: 0px;
+        }
+        img.book-cover {
+            width: 60px;
+        }
+        h2.h2_book_title, h3 {
+            font-size: 14px;
+        }
+        .radio_group ion-item .item-inner {
+            font-size: 14px;
+        }
+        div.float-left {
+            width: calc(100% - 80px);
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar color="moxie_{{config.mode}}">
+        <div class="center-heading">
+            <ion-title>All Reviews</ion-title>
+        </div>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item *ngFor="let item of reviewList; let i = index ">
+        <review-card [data]="item" [showmore]="true" [showForceItem]='true' [canRemoveReview]="(config.mode == 'teacher')" [isedit]="(config.mode == 'teacher') || item.student_id == config.student_id"
+            (editReview)="editReview($event)" (removeReview)="removeReview($event, i)" [studenttitle]="item.student ? item.student.title : 'teacher'"></review-card>
+    </ion-item>
+</ion-content>

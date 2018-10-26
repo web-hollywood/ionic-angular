@@ -1,0 +1,196 @@
+page-home {
+  .moxie-summary-card ion-col {
+    @include moxie-main-font();
+    font-weight: bold;
+  }
+
+  .moxie-summary-card-results ion-col {
+    @include moxie-main-font(20px);
+  }
+  .moxie-summary-card-results ion-col.font-number{
+    font-family: $moxie-font-sourcesans-light;
+  }
+
+  .teacher-mode .home-page-search-container {
+     background-color:map-get($colors, navbarBlue);
+  }
+
+  .student-mode .home-page-search-container {
+    background-color:map-get($colors, moxie);
+  }
+  .readchallenge text{
+    font-family: 'Alegreya Sans', sans-serif;
+  }
+  #readchallenge{
+    overflow-x: hidden;
+  }
+
+  ion-header {
+    ion-navbar {
+      .show-back-button {
+        .button-inner {
+          .back-button-text-md:before {
+            content: "Back";
+            width: 37px;
+            height: 10px;
+            color: white;
+            margin-left: -2px;
+            font-weight: normal;
+            font-size: 18px;
+            margin-top: -7px;
+            text-transform: capitalize;
+          }
+          ion-icon.ion-md-arrow-back:before {
+            content: "\f3cf" !important;
+            font-size: 36px;
+            margin-left: -5px;
+          }
+        }
+      }
+
+    ion-searchbar{
+      .searchbar-input {
+        background-color: white;
+        border-radius: 8px!important;
+      }
+    }
+    .autocomplete  {
+      overflow-y: scroll;
+      height: 250px !important;
+      margin: 5px!important;
+    }
+    #autocomplete {
+      overflow-y: scroll;
+      height: 250px !important;
+      margin: 5px!important;
+    }
+    .hideDiv {
+      display: none!important;
+    }
+  }
+}
+.hideElement {
+  display : none;
+}
+  ion-header{
+    border-bottom: none !important;
+    #autocomplete {
+      margin-top: -5px;
+      overflow-y: scroll;
+      max-height: 200px !important;
+      margin-left: 7%;
+      margin-right: 7%;
+      border: 1px solid darkgray;
+      .item-inner{
+        border: none!important;
+      }
+      ion-list {
+        margin-bottom: 0px!important;
+      }
+      ion-item.item-block {
+        height: 3rem;
+          min-height: 1.4rem!important;
+      }
+    }
+    .autocomplete {
+      margin-top: -5px;
+      overflow-y: scroll;
+      max-height: 200px !important;
+      margin-left: 7%;
+      margin-right: 7%;
+      border: 1px solid darkgray;
+      .item-inner{
+        border: none!important;
+      }
+      ion-list {
+        margin-bottom: 0px!important;
+      }
+      ion-item.item-block {
+        height: 3rem;
+          min-height: 1.4rem!important;
+      }
+    }
+
+    .hideDiv {
+      display: none!important;
+    }
+  }
+  #teacher {
+    input {
+     background-color: green!important;
+     color: white!important;
+   }
+  }
+  .header::after {
+  }
+
+  .home-page-search-container {
+    height: 108px;
+  }
+
+  .home-page-search {
+    font-family: $moxie-font-light;
+    font-style: italic;
+    font-size: 24px;
+    padding: 3px 0px 3px 0px;
+
+    .searchbar-search-icon {
+      left: calc(10px);
+      top: 30%;
+      background-image: url("/assets/images/SearchIcon.svg")
+    }
+    .searchbar-input {
+      background: #FFFFFF;
+      border-radius: 10px;
+      height: 50px;
+      font-size: 24px;
+      padding-left: 40px;
+    }
+
+    .searchbar-clear-icon {
+      right: 50px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    feed-item ion-item .avatar-scroller ion-avatar img {
+      width: 30px;
+      height: 30px;
+    }
+
+    feed-item .item .item ion-avatar img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media (max-width: 750px) {
+    .home-page-search {
+      .searchbar-input {
+        border-radius: 10px;
+        height: 36px;
+        font-size: 18px;
+      }
+      .searchbar-search-icon {
+        top: 23%;
+      }
+    }
+    .home-page-search-container {
+      height: 50px;
+    }
+
+    student-list .student-title-text{
+      font-size: 16px;
+    }
+
+  }
+  ion-content {
+    ion-item {
+      padding-left: 0px!important;
+      .moxie-main-text-light {
+        font-weight: bold;
+      }
+    }
+  }
+
+}

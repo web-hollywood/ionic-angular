@@ -1,0 +1,17 @@
+popover {
+	.list-md{
+		margin-bottom: 0px!important;
+	}
+	.list-ios{
+		margin-bottom: 3px!important;
+	}
+	.list-ios > .item-block:first-child{
+		border: none!important;
+	}
+	ion-item{
+		border: none;
+	}
+	.list-ios > .item-block:last-child{
+		border: none;
+	}
+}

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+  	<button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Create Class</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+	  <ion-item>
+	    <ion-label color="primary" stacked>Title</ion-label>
+	    <ion-input type="text" [(ngModel)]="newClass.title" placeholder="Enter Class Title"></ion-input>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label color="primary" stacked>Reading System</ion-label>
+	    <ion-select placeholder="Select Reading System" [(ngModel)]="newClass.readingsystem">
+		    <ion-option value="gr">Fountas & Pinnell</ion-option>
+	        <ion-option value="lex">Lexile</ion-option>
+	        <ion-option value="atos">ATOS</ion-option>
+	  	</ion-select>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label color="primary" stacked>Grade</ion-label>
+	     <ion-select placeholder="Select Grade" [(ngModel)]="newClass.grade">
+		    <ion-option value="k">K</ion-option>
+	        <ion-option value="1">1</ion-option>
+	        <ion-option value="2">2</ion-option>
+	        <ion-option value="3">3</ion-option>
+	        <ion-option value="4">4</ion-option>
+	        <ion-option value="5">5</ion-option>
+	        <ion-option value="6">6</ion-option>
+	        <ion-option value="7">7</ion-option>
+	        <ion-option value="8">8</ion-option>
+	  	</ion-select>
+	  </ion-item>
+	  <br><br>
+	  <button ion-button full color="light" (click)="createClass()">
+	  	Create Class
+	  </button>
+   </ion-list>
+   <div class='overlay' (click)="goToDashBoard()"></div>
+</ion-content>

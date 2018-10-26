@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ClassCodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>Class Code</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding>
+    <ion-toolbar color="moxie_teacher">
+        <ion-title>Class Code</ion-title>
+    </ion-toolbar>
+    <div class="code-container">
+        <ion-list class="wrapper">
+            <div class="warning-container">
+              <div class="warning">{{warningCodeText}}</div>
+              <div class="warning">{{warningNameText}}</div>
+            </div>
+            <ion-item no-lines>
+              <ion-input placeholder="Class code" type="text" class="font-number" [(ngModel)]="classCode" (input)='onInputClassID($event)' autocorrect="off" autocapitalize="none"></ion-input>
+            </ion-item>
+            <ion-item no-lines>
+              <ion-input placeholder="Student’s name" type="text" class="font-number" [(ngModel)]="childName" (input)='onInputChildName($event)' ></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div class="button-container">
+        <button ion-button full color="navbarBlue" (click)="cancel()">Cancel</button>
+        <button ion-button full color="navbarBlue" (click)="check()">Request</button>
+    </div>
+</ion-content>

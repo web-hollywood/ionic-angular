@@ -1,0 +1,20 @@
+
+<ion-content padding>
+    <div tappable class="bt_close" (click)="viewCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon>
+    </div>
+    <div  class="swiper-container" [swiper]="config_swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide item_intro" *ngFor="let item of intro; let i=index;">
+                <h1>{{item.title}}</h1>
+                <!-- <span [inner-html]="{{item.description}}"></span> -->
+                <p [innerHTML]="item.description"></p>
+                <img src="assets/images/{{item.image}}" />
+                <div>{{item.description2}}</div>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</ion-content>

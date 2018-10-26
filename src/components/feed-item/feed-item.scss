@@ -1,0 +1,434 @@
+feed-item {
+
+  height:200px !important;
+
+  ion-thumbnail img.book-cover {
+		height: 140px;
+		width: 90px;
+    max-width: 100px;
+	}
+
+  div.class-library-banner {
+    color: #fff;
+    background-color: #93c83d;
+    position: absolute;
+    bottom: 20%;
+    padding: 2px 6px 2px 6px;
+    font-size: 1.4rem;
+  }
+  div.readaloud{
+    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  }
+  .review-swiper .swiper-slide{
+    padding: 0px 20px;
+  }
+  .bold-span{
+    font-weight: bold;
+  }
+
+  h2.h2_book_title{
+		padding-top: 5px;
+	}
+
+  .active {
+    color: #93c83d;
+  }
+
+  .action-items {
+    margin-top: 30px;
+  }
+
+  .action-items div {
+    float: left;
+    width: 40px;
+    position: relative;
+    ion-icon {
+      font-size: 2.4rem;
+    }
+    .ion-ios-thumbs-up-outline {
+      margin-top: -1px;
+    }
+    .ion-ios-checkbox-outline {
+      margin-left: 2px;
+      margin-top: 1px;
+    }
+  }
+
+  .feed-column-fixed-width {
+    flex: 0 0 160px;
+  }
+
+  .avatar-scroller {
+    text-align: right !important;
+  }
+
+  .avatar-scroller-avatar {
+    display: inline-block;
+  }
+
+  div.cheer {
+    width: 60px;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  ion-avatar.cheer_reason {
+    position: relative;
+  }
+  .avatar-scroller ion-avatar.cheer_reason img.reason {
+    width: 100px;
+    height: 100px;
+    border-radius: 0px;
+    margin-top: -10px;
+  }
+
+  .reason {
+    float: right;
+    font-size: 14px;
+    color: #fff;
+    padding: 0px 3px;
+  }
+  .avatar-scroller ion-avatar img.reason_cheer {
+    position: absolute;
+    bottom: 10px;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+  }
+
+  button.dropdown,
+  img.dropdown {
+    height: 30px;
+    height: 20px;
+    background: none !important;
+    background-color: none !important;
+    box-shadow: none !important;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+  }
+  button.dropdown img{
+    max-height: 100%;
+  }
+  .captalize{
+    text-transform: lowercase;
+  }
+  .captalize:first-letter {
+    text-transform: uppercase;
+  }
+  ion-item{
+    .item-inner{
+      .rating{
+        margin-top: 0px;
+        ion-icon{
+          font-size: 16px;
+        }
+        li{
+            padding-left: 0px!important;
+            padding-right: 0.5px!important;
+
+        }
+      }
+    }
+    ion-row{
+      margin-top: 8px;
+      ion-badge{
+        font-size: 1rem;
+        height: 15px;
+        background-color: #f1f1f1!important;
+        color: #424242 !important;
+        margin-right: 2px!important;
+        font-family: $moxie-font-sourcesans-light;
+        border-radius: 2px;
+      }
+    }
+    ion-badge{
+      font-weight: normal!important;
+    }
+    ion-label{
+      h2{
+        width: 165px;
+        font-weight: bold!important;
+      }
+      .dropdown{
+        padding:0px;
+
+        margin-right: 10px;
+        .ion-md-arrow-dropdown{
+          padding-left: 0px;
+          padding-right:0px;
+        }
+        .ion-ios-arrow-dropdown{
+          font-size:30px;
+          padding-left:0px;
+          padding-top:20px;
+        }
+      }
+    }
+    .est_min{
+      padding-left: 20px;
+      color: #558dca;
+    }
+  }
+  ion-item ion-label .swiper-slide .dropdown {
+    margin-right: -15px;
+  }
+  .font-number{
+    font-family: $moxie-font-sourcesans-light;
+  }
+	.action-items{
+		margin-top: 0px;
+	}
+
+  ion-item.data_action{
+    min-height: 10px;
+  }
+  ion-item.data_action ion-label{
+    margin: 0px;
+  }
+  ion-item.data_action ion-row.row{
+    margin-top: 0px;
+    display: block;
+  }
+  ion-item.data_action ion-row.row .col{
+    width: calc(100% - 98px);
+    float: right;
+  }
+  ion-item.data_action ion-row.row .col.feed-column-fixed-width{
+    width: 98px;
+  }
+  ion-item.data_action .scroll-content{
+    padding: 1px !important;
+  }
+  ion-item.data_action .action-items div{
+    float: right;
+    width: auto;
+    margin-top: 5px;
+    margin-left: 7px;
+  }
+  ion-item.data_action.item-block .item-inner{
+    padding-right: 0px;
+  }
+  .grid {
+    padding: 0px;
+  }
+  .avatar-scroller{
+    height: 80px;
+    width: 50%;
+    display: inline-block;
+  }
+  .avatar-scroller.reason_action{
+    float: left;
+  }
+  .reason_count {
+    position: absolute;
+    left: calc(50% + 4px);
+    bottom: 7px;
+  }
+  ion-item ion-item ion-label h2{
+    display: inline-block;
+    width: auto;
+  }
+  ion-item ion-item ion-label,
+  ion-item ion-item ion-label h4{
+    font-size: 12px;
+  }
+  h2.h2_book_title{
+    width: calc(100% - 10px);
+    font-size: 1.4rem;
+  }
+  ion-item .item-inner ion-label.label{
+    margin: 2px 0px 2px 0;
+  }
+
+  /*******************/
+  ion-item.s_title ion-label.label-md{
+    line-height: 1.2rem;
+  }
+  ion-item.s_title ion-thumbnail[item-left]{
+    padding-right: 8px;
+    margin-right: 8px;
+  }
+  ion-item.s_title ion-label .dropdown{
+    margin-right: 0px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin-right: -10px;
+    margin-top: -10px;
+  }
+  ion-item.s_title,
+  ion-item.data_action{
+    padding-left: 0px;
+  }
+  img.dropdown{
+    width: 20px;
+    height: 20px;
+  }
+  /*background: #93c83d;*/
+  .ribbon {
+    position: absolute;
+    right: 0px; 
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px; height: 75px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 100px;
+    display: block; 
+    background: #79A70A;
+    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px; right: -21px;
+  }
+  .ribbon.blue span{
+    background: #558dca;
+    background: linear-gradient(#558dca 0%, #558dca 100%);
+  }
+  .ribbon span::before {
+    content: "";
+    position: absolute; left: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid #79A70A;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79A70A;
+  }
+  .ribbon.blue span::before {
+    border-left: 3px solid #558dca;
+    border-top: 3px solid #558dca;
+  }
+  .ribbon span::after {
+    content: "";
+    position: absolute; right: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid transparent;
+    border-right: 3px solid #79A70A;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #79A70A;
+  }
+  .ribbon.blue span::after {
+    border-right: 3px solid #558dca;
+    border-top: 3px solid #558dca;
+  }
+  .avatar-scroller .scroll-content{
+    margin-top: 0px;
+    height: 97px;
+  }
+  .reviewlb{
+    font-size: 1.2rem;
+    padding-top:1px;
+    color: #555;
+    position: relative;
+  }
+  .reviewadd{
+    color: #558dca;
+    float: right;
+    display: block;
+  }
+  rating.book_rating{
+    height: 15px;
+  }
+  .reviewlb ion-icon{
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  .reviewlb span b{
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .reviewlb img.review_down{
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    width: 20px;
+    height: auto;
+  }
+  .swiper-slide > div{
+		width: 100%;
+	}
+  div.noline ion-item > .item-inner{
+    border-bottom: 0px !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    ion-thumbnail img.book-cover {
+      height: 180px;
+      width: 120px;
+      max-width: 120px;
+    }
+    h2.h2_book_title{
+      font-size: 1.8rem;
+    }
+    .item-md h3, .item-md h4, .item-md h5, .item-md h6{
+      font-size: 1.6rem;
+    }
+    ion-badge{
+      font-size: 1.5rem;
+    }
+    ion-item ion-row ion-badge{
+      font-size: 1.3rem;
+      height: 18px;
+    }
+    .push-b-3{
+      font-size: 1.5rem;
+      padding: 3px;
+    }
+    .avatar-scroller ion-avatar img{
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  ion-item.item ion-avatar[item-left]{
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+  @media screen and (max-width: 400px) {
+    ion-item.item_home.item{
+      .book_author,
+      .book_series,
+      .book_level{
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 374px) {
+    .book_author,
+    .book_series,
+    .book_level{
+      display: none;
+    }
+    ion-item.item_home.item{
+      .h2_book_title{
+        
+      }
+    }
+  }
+
+  /************************/
+}
+.push-b-3{
+  padding-bottom: 3px!important;
+  font-size:12px;
+}
+
+.icon-active {
+  color: #93c83d;
+}

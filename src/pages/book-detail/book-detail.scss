@@ -1,0 +1,147 @@
+page-book-detail {
+	.back-button-md {
+		display: block;
+	}
+	ion-content{
+		ion-item {
+			h4 p {
+				background-color: #93c83d;
+				padding: 10px;
+				border-radius: 5px;
+				color : white;
+				font-weight: bold;
+			    line-height: 1;
+			    white-space: nowrap;
+			    vertical-align: baseline;
+			    text-align : center;
+			}
+		}
+		.similar-button {
+			opacity: 1.0!important;
+			border-radius: 7px;
+			background-color: #ffdb00!important;
+			.button-inner{
+				color: black!important;
+			}
+		}
+		.scroll-content {
+			margin-top: 64px !important;
+			margin-bottom: 56px !important;
+		}
+	}
+	div.div_file{
+		margin-right: 50px;
+		margin-top: -10px;
+	}
+	div.div_file img{
+		max-width: 160px;
+		max-height: 160px;
+	}
+	.wideItem div.div_file {
+		margin-right: 10px;
+	}
+	.scroll-content {
+		.button-small-md{
+			border-radius: 10px;
+		}
+	}
+
+	.div_loghours{
+		color: #aaa;
+		font-size: 14px;
+	}
+
+	button.button ion-icon.icon{
+		padding-right: 8px;
+	}
+	.bt_selected{
+		background: #93c83d;
+	}
+	button.button-small{
+		text-transform: uppercase ;
+	}
+
+	feed-item.bookdetail ion-thumbnail img.book-cover{
+		height: 180px;
+		width: 130px;
+		max-width: 130px;
+	}
+	feed-item h2.h2_book_title{
+		font-size: 1.6rem;
+	}
+
+	ion-range .range-slider .range-bar{
+		top: 15px;
+		height: 13px;
+	}
+	ion-range .range-slider .range-bar-active{
+		background: #c9e28a;
+		background: -moz-linear-gradient(top, #c9e28a 0%, #ecffd3 23%, #a6cc7e 52%, #c9e28a 100%);
+		background: -webkit-linear-gradient(top, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		background: linear-gradient(to bottom, #c9e28a 0%,#ecffd3 23%,#a6cc7e 52%,#c9e28a 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9e28a', endColorstr='#c9e28a',GradientType=0 );
+		transition: all 0.5s;
+	}
+	ion-range.range.range-disabled{
+		opacity: 0.8;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	ion-range .range-slider .range-knob-handle{
+		display: none;
+	}
+	ion-range ion-label{
+		display: none;
+	}
+
+	button.bt_more ion-icon{
+		padding-right: 0px;
+		padding-left: 8px;
+	}
+	#div_more{
+		position: absolute;
+		top: 250px;
+		right: 10px;
+		background: #fff;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		z-index: 999;
+		padding: 5px;
+		box-shadow: #ddd 1px 1px 3px;
+		opacity: 0;
+	}
+	.swiper-slide > div{
+		width: 100%;
+	}
+	review-card .btupdate{
+		display: none;
+	}
+	.review-swiper .swiper-slide{
+		padding: 0px 20px;
+	}
+	.swiper-button-prev, .swiper-button-next {
+		top: 115px;
+	}
+}
+
+@media (min-width: 768px) {
+	page-book-detail {
+		.book_desc.item-md h2{
+			font-size: 2.8rem;
+		}
+		.book_desc.item-md p{
+			font-size: 2rem;
+		}
+		.reviewlb{
+			font-size: 1.4rem;
+			margin-left: 0px;
+			margin-bottom: 5px;
+		}
+		feed-item .reviewlb span b{
+			font-size: 18px;
+		}
+		.reviewlb ion-icon{
+			font-size: 24px;
+		}
+	}
+}

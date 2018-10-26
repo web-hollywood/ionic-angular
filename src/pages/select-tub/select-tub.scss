@@ -1,0 +1,26 @@
+page-select-tub {
+	ion-header{
+		ion-navbar{
+			ion-title{
+				.toolbar-title{
+					text-align: center;
+					font-weight: 300;
+					/*margin-left: 120px;*/
+				}
+			}
+			ion-title.title-ios{
+				.toolbar-title{
+					text-align: center;
+					font-weight: 300;
+					margin-left: 0px;
+				}
+			}
+		}
+	}
+	button.button-md,
+	button.button-md:hover,
+	button.button,
+	button.button:hover{
+		background: #558dca !important;
+	}
+}

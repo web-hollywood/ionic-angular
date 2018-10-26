@@ -1,0 +1,16 @@
+.popover_search{
+    h3 {
+        text-align: center;
+    }
+    .item-select .label-md{
+        color: #333;
+    }
+    ion-select{
+        min-width: 80px;
+    }
+}
+.popover-md .popover-content{
+    width: 320px;
+    left: auto !important;
+    right: 5px !important;
+}

@@ -1,0 +1,21 @@
+page-scan-book {
+
+    .div_label{
+        background: #ffdb00;
+        font-size: 18px;
+        font-weight: bold;
+        padding:5px 0px 5px 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .div_buttons button.button{
+        display: inline-block;
+        min-width: 100px;
+        margin: 0px 10px;
+        font-size: 18px;
+    }
+    .div_buttons{
+        text-align: center;
+    }
+
+}

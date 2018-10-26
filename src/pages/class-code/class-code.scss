@@ -1,0 +1,64 @@
+page-class-code {
+    &.ion-page {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .content {
+        width: 80%;
+        height: 60%;
+        left: 10%;
+        top: 20%; 
+        .toolbar {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+        div.scroll-content {
+            padding-bottom: 0 !important;
+        }
+    } 
+    .code-container {
+        height: 100%;
+        width: 100%;
+        display: table;
+        margin-top: -20px;
+        .wrapper {
+            display: table-cell;
+            vertical-align: middle;
+            &.list .item {
+                border: solid 1px #c8c7cc;
+                margin: 5px 0;
+            }
+            .warning-container {
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                top: 60px;
+                .warning {
+                  font-size: 1.6rem;
+                  margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+    .button-container {
+        position: absolute;
+        height: 60px;
+        left: 10px;
+        right: 10px;
+        bottom: 0px;
+        display: flex;
+        .button {
+            margin-left: 10px;
+            margin-right: 10px;
+            height: 36px;
+            border-radius: 4px;
+        }
+    }    
+    @media (min-width: 1024px) {
+        &.ion-page {
+            background: transparent;
+        }
+    }
+}
+

@@ -1,0 +1,100 @@
+student-book-list {
+  // ion-badge {
+  //   margin: 0;
+  //   position: absolute;
+  //   top: 0px;
+  // }
+  .col ion-avatar .list-avatar {
+    max-height: 82px !important;
+    width: 45px;
+    height: 45px;
+  }
+
+  .edit-text {
+    @include moxie-main-font();
+    color: #93c83d;
+  }
+
+  .group_title{
+    font-weight: bold;
+  }
+
+  .student-title-text {
+    @include moxie-main-font-light(16px);
+    font-style: italic;
+    padding-left: 4px;
+  }
+
+  .moxie-alert-container {
+    position: absolute;
+    height:20px;
+    top:0;
+    left: 60%;
+    width:20px;
+  }
+
+  .moxie-alert {
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    color:white;
+  }
+
+  .swiper-container {
+    margin-top: -5px;
+    height: 160px;
+  }
+
+  .swiper-slide > div{
+    width: 100%;
+  }
+  .arrowNext{
+    position: absolute;
+    right: -5px;
+    top: 38%;
+    font-size: 22px;
+    z-index: 2;
+    cursor: pointer;
+    padding: 5px;
+    padding-right: 0px;
+  }
+
+  .list-ios {
+
+    margin-bottom: 0px;
+    .item {
+      ion-thumbnail {
+        margin-top: 0;
+      }
+      .label {
+        margin: 0px 0px 4px 0;
+        h4 {
+          font-size: 1.6rem;
+          padding-top: 20px;
+          color: #424242;
+        }
+      }
+    }
+
+    .card-body.item {
+      border: solid 2px #558dca;
+      margin-bottom: 8px;
+      margin-top: -10px;
+      border-radius: 16px;
+      padding-top: 8px;
+
+      .label {
+        margin-bottom: 0;
+      }
+    }
+
+    &.pending {
+      opacity: 0.5;
+      .card-body.item .col {
+        text-align: center;
+      }
+    }
+  }
+
+}

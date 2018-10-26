@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Class Library View</ion-title>
+  </ion-navbar>
+
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-searchbar #q  debounce="400" [(ngModel)]="searchValue" (keyup.enter)="getSearchBook(q.value)"                        (search)="searchBook($event.target.value)" (ionInput)="searchBook($event.target.value)" placeholder="{{config.searchPlaceholder}}"  (ionBlur)="checkBlur(q.value)" (ionFocus)="searchBook('')" autocomplete="on">
+    </ion-searchbar>
+  </ion-navbar>
+  <div class="autocomplete2" id="autocomplete2" *ngIf = "view_Flag && (((search_flag == 'history') && (search_items.length > 0)) || ((search_flag == 'auto_complete') ))">
+    <ion-list *ngIf = "search_flag == 'history'">
+      <ion-item *ngFor="let item of search_items" (click)="itemClick(item.data?.q)">
+        {{ item.data?.q }}
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf = "search_flag == 'auto_complete'">
+      <ion-item *ngFor="let item of auto_complete_items.authors" (click)="itemClick(item)">
+        {{ item }}   <h3 style="float: right;font-style: italic;">Authors</h3>
+      </ion-item>
+      <ion-item *ngFor="let item of auto_complete_items.series" (click)="itemClick(item)">
+        {{ item }}   <h3 style="float: right;font-style: italic;">series</h3>
+      </ion-item>
+      <ion-item *ngFor="let item of auto_complete_items.title" (click)="itemClick(item)">
+        {{ item }}   <h3 style="float: right;font-style: italic;">title</h3>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-header>
+<ion-content padding>
+  <ion-toolbar>
+    <ion-segment [(ngModel)] = "viewStyle">
+      <ion-segment-button value="cover" clear icon-only>
+        <ion-icon name='ios-apps-outline'></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="list" clear icon-only>
+        <ion-icon name = "ios-list-outline"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="tub"  icon-only>
+        <ion-icon name="ios-basket-outline" item-right></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-list>
+      <ion-item>
+        <ion-label>Sort by:</ion-label>
+        <ion-select [(ngModel)]="sortBy" #C (ionChange)="onSelectChange(C.value)">
+          <ion-option value="A" selected = "true">  A  -  Z </ion-option>
+          <ion-option value="Z"> Z  -  A </ion-option>
+          <ion-option value="R">Recency</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+    <div [ngSwitch]="viewStyle" >
+    <ng-container *ngSwitchCase="'cover'">
+      <div class="col-33" *ngFor="let item of book_cover_items" (click) = "openDetail_cover(item)">
+        <img class="book-cover" src="{{config.mainURL}}/book/{{item.book?.id}}/cover" >
+      </div>
+      <ion-infinite-scroll (ionInfinite)="doInfinite_cover($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ng-container>
+    <ion-list *ngSwitchCase="'list'">
+      <ng-container >
+        <feed-item *ngFor="let book of book_list_items" [data]="{book:book.book}" (click) = "openDetail_list(book)"></feed-item>
+      </ng-container>
+      <ion-infinite-scroll (ionInfinite)="doInfinite_list($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-list>
+    <ng-container *ngSwitchCase = "'tub'" ngSelected = "selected">
+      <ion-list *ngFor="let tub of tub_filtered_items; let i = index">
+        <ion-item no-lines>
+          <h2 margin-bottom (click) = "openTubContentPage(tub)">{{(tub)?.title}}</h2>
+        </ion-item>
+        <div  class="swiper-container" [swiper]="config_swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let book of get_tub_books(tub.title)" tappable (click) = "openDetail_tub(book)">
+              <ion-avatar text-center>
+                <img class="list-avatar" src="{{config.mainURL}}/book/{{book.book?.id}}/cover">
+              </ion-avatar>
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </ion-list>
+    </ng-container>
+  </div>
+</ion-content>

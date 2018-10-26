@@ -1,0 +1,14 @@
+<div class = "item-inner">
+	<div class = "input-wrapper">
+		<ion-label class = "label label-md">
+		<br>
+		v0.7.4 Build 1
+		<br>
+		commit 9b6dbb23b843239b058237d6067c2c7a7e1948a9
+		<br>
+		Date:   Wed May 3 18:47:27 2017 +0530
+		<br>
+		<br>
+		</ion-label>	
+	</div>
+</div>

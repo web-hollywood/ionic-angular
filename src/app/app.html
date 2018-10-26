@@ -1,0 +1,39 @@
+<ion-split-pane when="false">
+	<ion-menu [content]="content" (ionOpen)="menuOpened()">
+	  <ion-header>
+	    <ion-toolbar color="moxie_{{this.config.mode}}">
+	      <ion-title>Menu</ion-title>
+	    </ion-toolbar>
+	  </ion-header>
+
+	  <ion-content>
+	    <ion-list class="moxie-main-text-medium moxie_{{this.config.mode}}">
+	      <button menuClose ion-item (click)="changeMode('teacher')" *ngIf="this.config.mode === 'class' && !(this.config.pstudent)">
+	      	Teacher View
+	      </button>
+	      <button menuClose ion-item (click)="changeMode('class')" *ngIf="this.config.mode !== 'class' && this.config.mode !== 'parent'" >
+	      	Student View
+	      </button>
+	      <ng-container *ngIf="this.config.mode === 'teacher'">
+	      	  <button menuClose ion-item>Classes</button>
+		      <button menuClose ion-item (click)="changeClass(class.id, class.title)" *ngFor="let class of classes">
+	      		<h2 *ngIf="classTitle == class.title" style = "font-weight: bold;">&emsp;&#183;	{{class.title}}</h2>
+	      		<h2 *ngIf="classTitle != class.title">&emsp;&#183;	{{class.title}}</h2>
+		      </button>
+		  </ng-container>
+	      <ng-container *ngIf="this.config.mode === 'teacher' || this.config.mode == 'parent'">
+		     	<button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">{{page.title}}
+		     	</button>
+	      </ng-container>
+
+	      <button menuClose ion-item (click)="logout()">
+	      	Logout
+	      </button>
+	    </ion-list>
+	  </ion-content>
+
+	</ion-menu>
+
+	<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+
+</ion-split-pane>

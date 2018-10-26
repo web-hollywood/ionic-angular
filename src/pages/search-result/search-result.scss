@@ -1,0 +1,217 @@
+page-search-result {
+    ion-header{
+		border-bottom: none!important;
+
+		.autocomplete2 {
+			margin-top: -5px;
+			overflow-y: scroll;
+			max-height: 200px !important;
+			margin-left: 7%;
+			margin-right: 7%;
+			border: 1px solid darkgray;
+			.item-inner{
+				border: none!important;
+			}
+			ion-list {
+				margin-bottom: 0px!important;
+			}
+			ion-item.item-block {
+				height: 3rem;
+			    min-height: 1.4rem!important;
+			}
+		}
+		.hideDiv2 {
+			display: none;
+		}
+	}
+	.header::after {
+	}
+
+	
+	ion-content{
+
+		ion-list{
+			.item-inner{
+				border: none !important;
+			}
+			ion-item{
+				border: none!important;
+				padding-left: 0px!important;
+				.item-inner{
+					padding-right: 0px!important;
+				}
+				ion-label{
+					margin-right: 0px!important;
+					.button-round{
+							padding-left: 10px!important;
+							width: 48%!important;
+							font-size: 1.5rem!important;
+					}
+					.button-full{
+							width: 100%!important;
+					}
+					button{
+						height: 50px!important;
+						border-radius: 10px!important;
+					}
+				}
+				ion-label.label-md{
+					.button-round{
+							margin-left: 3px;
+							width: 48.5%!important;
+					}
+					.button-full{
+							margin-left: 0px;
+							width: 100%!important;
+					}
+				}
+			}
+		}
+	}
+	.scroll-content{
+		div.autocomplete2 {
+				  overflow-y: scroll;
+				  height: 250px !important;
+ 				  box-shadow: 0px 1px 1px 1px #888888;
+ 				  background-color: white!important;
+				  border-radius: 3px!important;
+				  border: 1px solid #f7f7f7;
+				  width: 90%!important;
+				  position: absolute;
+				  top: 0px;
+				  height: 150px;
+				  overflow-y: scroll;
+				  overflow-x: scroll;
+				  z-index: 999;
+				  padding-left: 5%!important;
+				  ion-list {
+				    margin: 0px!important;
+				    width: 100%!important;
+				    width: inherit;
+				    ion-item {
+				      .item-inner{
+				      	border: none!important;
+				      }
+				      img {
+				        max-height: 2.5rem!important;
+				        width: auto;
+				        margin: auto;
+				        display: block;
+				      }
+				    }
+				    ion-item:hover {
+				      cursor: pointer;
+				      background: #f1f1f1!important;
+				    }
+				  }
+				.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ 				   		border-bottom: none!important;
+					}
+				}
+	}
+	ion-list.list{
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+    h5 {
+        padding-top: 30px;
+    }
+    ion-select.grade_select{
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    .grade_item{
+        width: 80px;
+        padding: 5px 10px;
+        float: left;
+        height: 44px;
+        text-align: center;
+    }
+    .grade_item.right{
+        border-right: 1px solid #ccc;
+    }
+    .grade_item.sel{
+        background: #558dca;
+        color: #fff;
+        border-radius: 10px;
+    }
+    .div_grade{
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        clear: both;
+    }
+    feed-item .item-md.item-block .item-inner{
+        border-bottom: 1px solid #dedede;
+    }
+    .item-md.item-block .item-inner{
+        border: 0px;
+    }
+    .liner{
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 10px;
+        height: 10px;
+    }
+    .msg{
+        padding: 10px 5px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .div_meta ion-item{
+        max-width: 150px;
+    }
+    .div_range{
+        max-width: 500px;
+    }
+    .div_range ion-range{
+        width: calc(100% - 100px);
+        padding-top: 0px;
+        float: left;
+    }
+    .div_range ion-range ion-label{
+        font-size: 16px;
+    }
+    .div_range .range-md .range-knob{
+        top: 8px;
+        width: 28px;
+        height: 28px;
+    }
+    .quality{
+        background: #558dca;
+        padding: 0px 10px;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .div_range ion-range ion-label {
+        max-width: 55px;
+        white-space: normal;
+    }
+    .div_grade {
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 52px;
+    }
+    .div_grade_wrapper {
+        width: 2000px;
+    }
+    .div_grade::-webkit-scrollbar {
+        height: 5px;
+    }
+    .div_grade::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    .div_grade::-webkit-scrollbar-thumb {
+        background: #888; 
+    }
+    .div_grade::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+    @media (max-width: 500px) {
+        .div_range ion-range {
+            width: 100%;
+        }
+    }
+}

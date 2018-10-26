@@ -1,0 +1,53 @@
+page-intro {
+	ion-content {
+        .bt_close{
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            font-size: 32px;
+            z-index: 999;
+            padding: 10px;
+        }
+		.scroll-content {
+            text-align: center;
+            .swiper-container{
+                height: calc(100% - 30px);
+                .item_intro {
+                    text-align: center;
+                    padding-left: 0px;
+                    h1 {
+                        margin-bottom: 0px;
+                        margin-top: 2rem;
+                        font-weight: bold;
+                        font-family: $moxie-font;
+                        color: #93c83d;
+                    } 
+                    img {
+                        max-height: 70%;
+                        margin: 10px auto;
+                    }
+                    p, div{
+                        max-width: 600px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    @media (max-width: 400px) {
+                        h1 {
+                            font-size: 20px;
+                        }
+                        p, div {
+                            font-size: 14px;
+                            max-width: 95%;
+                        }
+                    }
+                }
+                .swiper-button-prev,
+                .swiper-button-next{
+                    top: calc(50% - 22px);
+                }
+            }            
+        }
+    }
+    
+    
+}

@@ -1,0 +1,17 @@
+<!-- Generated template for the UserRegistrationComponent component -->
+<div class="container">
+<div class="close-button" (click)="closeModal()"> <ion-icon name="close"></ion-icon></div>
+  <div class="full-page-frame">
+    <iframe #iframe style="border: 0; width: 100%; height: 100%">Your browser doesn't support iFrames.</iframe>
+  </div>
+  <ion-spinner *ngIf="loading"></ion-spinner>
+  <div *ngIf="loading" class="loading-overlay"></div>
+  <div *ngIf="showTimeoutError" class="error-loading-iframe">
+    <div>
+    We seem to be having some trouble loading the registration page.
+    Please visit <span>www.moxiereader.com</span> to register.
+    </div>
+  </div>
+</div>
+
+

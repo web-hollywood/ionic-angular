@@ -1,0 +1,6 @@
+<ion-list *ngIf="itemList.length > 1">
+  <ng-container *ngFor="let item of itemList">
+    <ion-item (click)="itemSelected(item)">{{ item.title }}</ion-item>
+  </ng-container>
+</ion-list>
+<ion-item *ngIf="itemList.length == 1" (click)="itemSelected(itemList[0])">{{ itemList[0].title }}</ion-item>

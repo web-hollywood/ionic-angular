@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Select Tub</ion-title>
+    <ion-buttons end>
+    	<button icon-only ion-button (click)="viewCtrl.dismiss()">Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list no-lines>
+		<button full big round ion-button padding margin-bottom (click)="showAdd = true">
+			<ion-icon name="add-circle" margin-right></ion-icon> Add New Tub
+		</button>
+
+		<ion-item *ngIf="showAdd">
+		    <ion-textarea [(ngModel)]="tubName" placeholder="Enter tub name"></ion-textarea>
+		</ion-item>
+
+		<ion-item *ngIf="showAdd">
+		   <ion-row text-center>
+		    <ion-col>
+				<button full round ion-button (click) = "createTub()">Add</button>
+			</ion-col>
+			<ion-col>
+		    	<button full round ion-button (click)="showAdd = false">Cancel</button>
+		    </ion-col>
+		   </ion-row>
+		</ion-item>
+
+		<button full big round ion-button padding margin-bottom (click)="addToTub(tub)" *ngFor="let tub of tubs"><h6 *ngIf="tub.title != ''"  color="moxie_class">{{tub.title}}</h6></button>
+	</ion-list>
+</ion-content>

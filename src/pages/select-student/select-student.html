@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Select Student</ion-title>
+    <ion-buttons end>
+    	<button ion-button (click)="viewCtrl.dismiss()">Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-label class="moxie-main-text-light lb_sel_student" color="moxie_{{config.mode}}">Tap on a student to add to their selected to read list</ion-label>
+	<student-list [list]="studentList" [type]="'nolabel'" (selectStudent)="selectBook($event)"></student-list>
+</ion-content>

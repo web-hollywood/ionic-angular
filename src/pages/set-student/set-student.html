@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Student Setting</ion-title>
+    <img src="{{config.mainURL}}/class/{{classData.class.id}}/student/{{studentData.student.id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="slideHome()" *ngIf="currentIndex !== 0">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()" *ngIf="currentIndex === 0">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item>
+		<ion-label fixed>New PIN</ion-label>
+		<ion-input max=4 maxlength="4" type="tel" [(ngModel)]="pin" placeholder="Enter New PIN"></ion-input>
+	</ion-item>
+	<ion-item>
+		<button ion-button full large round color="primary" (click)="updatePin()">Update</button>
+	</ion-item>
+ <!--
+	<ion-slides (ionSlideDidChange)="onSlideChange()">
+		<ion-slide>
+			<ion-list>
+				<ion-item (click)="switchSlide(2)">
+					<ion-icon name="unlock" item-left></ion-icon>
+					Change PIN
+          <ion-icon class="push-icon" name="ios-arrow-forward-outline"></ion-icon>
+				</ion-item>
+			</ion-list>
+		</ion-slide>
+
+		<!-- Pin Change -->
+		<!--
+		<ion-slide>
+			<ion-item>
+				<ion-label fixed>New Pin</ion-label>
+				<ion-input type="number" [(ngModel)]="pin" placeholder="Enter New Pin"></ion-input>
+			</ion-item>
+			<ion-item>
+				<button ion-button full large round color="primary" (click)="updatePin()">Update</button>
+  			</ion-item>
+		</ion-slide>
+
+  </ion-slides>
+	-->
+</ion-content>

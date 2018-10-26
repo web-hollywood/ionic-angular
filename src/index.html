@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MoxieReader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4e8ef7">
+
+    <!-- cordova.js required for cordova apps -->
+    <script src="cordova.js"></script>
+
+    <!-- un-comment this code to enable service worker -->
+    <!-- <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script> -->
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/moxie-chart/lib/moxiechart.css">
+    <link rel="stylesheet" type="text/css" href="assets/moxie-chart/lib/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="build/main.css">
+
+    <div class="dialog_overlay" id="dialog_overlay">
+        <div class="dialog">
+            <ion-label class='title'>Great!</ion-label>
+            <ion-label class='desc'>What page did you get to?</ion-label>
+            <div class="row">
+                <input class='inputbox' id="pagenum" type='tel' />
+                <div class='inputlabel'> / <span>208</span></div>
+            </div>
+            <div class="row1">
+                <div tappable class='sbutton' id='bt_cancel'>Nevermind</div>
+                <div tappable class='sbutton' id='bt_done'>Done</div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_minute">
+        <div class="dialog" style='height:360px'>
+            <ion-label class='title' style='margin-top:-20px;padding-bottom:0px'>Great!</ion-label>
+            <ion-label class='desc'>How long did you take in minutes?</ion-label>
+            <div class="row" style='margin-top:0px;'>
+                <div id='pagehour_picker'></div><span class='sbp'>hr</span>
+                <div id='pageminute_picker'></div><span class='sbp'>min</span>
+                <select id='pagehour'>
+                </select>
+                <span class='sb'>hr</span>
+                <select id='pageminute'>
+                </select>
+                <span class='sb'>min</span>
+                <div class='inputlabel'></div>
+            </div>
+            <div class="row1" style='margin-top:0px'>
+                <div tappable class='sbutton' id='bt_cancel1'>Nevermind</div>
+                <div tappable class='sbutton' id='bt_done1'>Done</div>
+            </div>
+            <div class='output'></div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_finish">
+        <div class="dialog">
+            <ion-label class='title'>Great!</ion-label><br/><br/>
+            <ion-label class='desc desc1'>Calculating...</ion-label>
+            <ion-label class='desc desc2'></ion-label>
+            <div style='text-align: center'>
+                <div tappable class='sbutton bt_ok' id='bt_ok'>Ok</div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_finish1">
+        <div class="dialog">
+            <ion-label class='title'>Finish Reading</ion-label><br/><br/>
+            <ion-label class='desc desc1'></ion-label>
+            <ion-label class='desc desc2'></ion-label>
+            <br/>
+            <div class="row1">
+                <div tappable class='sbutton' id='bt_cancel_finish1'>Nevermind</div>
+                <div tappable class='sbutton' id='bt_next_finish1'>Next</div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_finish1_pages">
+        <div class="dialog">
+            <ion-label class='title'>Finish Reading</ion-label><br/>
+            <div class='sec_cont'>
+                <ion-label class='desc'>What page did you get to?</ion-label>
+                <div class="row">
+                    <input class='inputbox' id="pagenum_finish1" type='tel' />
+                    <div class='inputlabel'> / <span></span></div>
+                </div>
+                <div class="row1">
+                    <div tappable class='sbutton' id='bt_cancel_finish1_pages'>Nevermind</div>
+                    <div tappable class='sbutton' id='bt_next_finish1_pages'>Done</div>
+                </div>
+            </div>
+            <div class='sec_cont1'>
+                <ion-label class='desc desc1'>Calculating...</ion-label>
+                <ion-label class='desc desc2'></ion-label>
+                <div style='text-align: center'>
+                    <div tappable class='sbutton bt_ok' id='bt_ok'>Ok</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_finish1_minute">
+        <div class="dialog" style='height:360px'>
+            <ion-label class='title' style='margin-top:-20px;padding-bottom:0px'>Finish Reading</ion-label>
+            <div class='sec_cont'>
+                <ion-label class='desc'>How long did you take in minutes?</ion-label>
+                <div class="row" style='margin-top:0px'>
+                    <div id='pagehour_finish1_picker'></div><span class='sbp'>hr</span>
+                    <div id='pageminute_finish1_picker'></div><span class='sbp'>min</span>
+                    <select id='pagehour_finish1'>
+                    </select>
+                    <span class='sb'>hr</span>
+                    <select id='pageminute_finish1'>
+                    </select>
+                    <span class='sb'>min</span>
+                    <div class='inputlabel'></div>
+                </div>
+                <div class="row1" style='margin-top:0px'>
+                    <div tappable class='sbutton' id='bt_cancel_finish1_minute'>Nevermind</div>
+                    <div tappable class='sbutton' id='bt_done_finish1_minute'>Done</div>
+                </div>
+            </div>
+            <div class='sec_cont1'>
+                <ion-label class='desc desc1'>Calculating...</ion-label>
+                <ion-label class='desc desc2'></ion-label>
+                <div style='text-align: center'>
+                    <div tappable class='sbutton bt_ok' id='bt_ok'>Ok</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog_overlay" id="dialog_overlay_remove">
+        <div class="dialog">
+            <ion-label class='title'>Remove Book!</ion-label><br/>
+            <ion-label class='desc desc1'>Select Reasons</ion-label>
+            <div class="row">
+                <select id='removereason'>
+                    <option value="Too many words">Too many words</option>
+                    <option value="Didn't get the story">Didn't get the story</option>
+                    <option value="Story was boring">Story was boring</option>
+                    <option value="Book was too long">Book was too long</option>
+                    <option value="Never started the book">Never started the book</option>
+                </select>
+            </div>
+            <div class="row1">
+                <div tappable class='sbutton' id='bt_remove_cancel'>Cancel</div>
+                <div tappable class='sbutton' id='bt_remove_ok'>Ok</div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cssHeartPosition {
+            position: absolute;
+            left: 45%;
+            top: 45%;
+        }
+        
+        .cssload-main {
+            content: '';
+            transform: translate(-100%, -240%);
+            -o-transform: translate(-100%, -240%);
+            -ms-transform: translate(-100%, -240%);
+            -webkit-transform: translate(-100%, -240%);
+            -moz-transform: translate(-100%, -240%);
+        }
+        
+        .cssload-main * {
+            font-size: 62px;
+        }
+        
+        .cssload-heart {
+            animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -o-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -ms-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -webkit-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -moz-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            top: 50%;
+            content: '';
+            left: 50%;
+            position: absolute;
+        }
+        
+        .cssload-heartL {
+            width: 1em;
+            height: 1em;
+            border: 1px solid rgb(147, 200, 61);
+            background-color: rgb(147, 200, 61);
+            content: '';
+            position: absolute;
+            display: block;
+            border-radius: 100%;
+            animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -o-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -ms-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -webkit-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -moz-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            transform: translate(-28px, -27px);
+            -o-transform: translate(-28px, -27px);
+            -ms-transform: translate(-28px, -27px);
+            -webkit-transform: translate(-28px, -27px);
+            -moz-transform: translate(-28px, -27px);
+        }
+        
+        .cssload-heartR {
+            width: 1em;
+            height: 1em;
+            border: 1px solid rgb(147, 200, 61);
+            background-color: rgb(147, 200, 61);
+            content: '';
+            position: absolute;
+            display: block;
+            border-radius: 100%;
+            transform: translate(28px, -27px);
+            -o-transform: translate(28px, -27px);
+            -ms-transform: translate(28px, -27px);
+            -webkit-transform: translate(28px, -27px);
+            -moz-transform: translate(28px, -27px);
+            animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -o-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -ms-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -webkit-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -moz-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+        }
+        
+        .cssload-square {
+            width: 1em;
+            height: 1em;
+            border: 1px solid rgb(147, 200, 61);
+            background-color: rgb(147, 200, 61);
+            position: relative;
+            display: block;
+            content: '';
+            transform: scale(1) rotate(-45deg);
+            -o-transform: scale(1) rotate(-45deg);
+            -ms-transform: scale(1) rotate(-45deg);
+            -webkit-transform: scale(1) rotate(-45deg);
+            -moz-transform: scale(1) rotate(-45deg);
+            animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -o-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -ms-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -webkit-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -moz-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+        }
+        
+        .cssload-shadow {
+            top: 97px;
+            left: 50%;
+            content: '';
+            position: relative;
+            display: block;
+            bottom: -.5em;
+            width: 1em;
+            height: .24em;
+            background-color: rgb(215, 215, 215);
+            border: 1px solid rgb(215, 215, 215);
+            border-radius: 50%;
+            animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -ms-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -webkit-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+            -moz-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+        }
+        
+        @keyframes cssload-square {
+            50% {
+                border-radius: 100%;
+                transform: scale(0.5) rotate(-45deg);
+            }
+            100% {
+                transform: scale(1) rotate(-45deg);
+            }
+        }
+        
+        @-o-keyframes cssload-square {
+            50% {
+                border-radius: 100%;
+                -o-transform: scale(0.5) rotate(-45deg);
+            }
+            100% {
+                -o-transform: scale(1) rotate(-45deg);
+            }
+        }
+        
+        @-ms-keyframes cssload-square {
+            50% {
+                border-radius: 100%;
+                -ms-transform: scale(0.5) rotate(-45deg);
+            }
+            100% {
+                -ms-transform: scale(1) rotate(-45deg);
+            }
+        }
+        
+        @-webkit-keyframes cssload-square {
+            50% {
+                border-radius: 100%;
+                -webkit-transform: scale(0.5) rotate(-45deg);
+            }
+            100% {
+                -webkit-transform: scale(1) rotate(-45deg);
+            }
+        }
+        
+        @-moz-keyframes cssload-square {
+            50% {
+                border-radius: 100%;
+                -moz-transform: scale(0.5) rotate(-45deg);
+            }
+            100% {
+                -moz-transform: scale(1) rotate(-45deg);
+            }
+        }
+        
+        @keyframes cssload-heart {
+            50% {
+                transform: rotate(360deg);
+            }
+            100% {
+                transform: rotate(720deg);
+            }
+        }
+        
+        @-o-keyframes cssload-heart {
+            50% {
+                -o-transform: rotate(360deg);
+            }
+            100% {
+                -o-transform: rotate(720deg);
+            }
+        }
+        
+        @-ms-keyframes cssload-heart {
+            50% {
+                -ms-transform: rotate(360deg);
+            }
+            100% {
+                -ms-transform: rotate(720deg);
+            }
+        }
+        
+        @-webkit-keyframes cssload-heart {
+            50% {
+                -webkit-transform: rotate(360deg);
+            }
+            100% {
+                -webkit-transform: rotate(720deg);
+            }
+        }
+        
+        @-moz-keyframes cssload-heart {
+            50% {
+                -moz-transform: rotate(360deg);
+            }
+            100% {
+                -moz-transform: rotate(720deg);
+            }
+        }
+        
+        @keyframes cssload-heartL {
+            60% {
+                transform: scale(0.4);
+            }
+        }
+        
+        @-o-keyframes cssload-heartL {
+            60% {
+                -o-transform: scale(0.4);
+            }
+        }
+        
+        @-ms-keyframes cssload-heartL {
+            60% {
+                -ms-transform: scale(0.4);
+            }
+        }
+        
+        @-webkit-keyframes cssload-heartL {
+            60% {
+                -webkit-transform: scale(0.4);
+            }
+        }
+        
+        @-moz-keyframes cssload-heartL {
+            60% {
+                -moz-transform: scale(0.4);
+            }
+        }
+        
+        @keyframes cssload-heartR {
+            40% {
+                transform: scale(0.4);
+            }
+        }
+        
+        @-o-keyframes cssload-heartR {
+            40% {
+                -o-transform: scale(0.4);
+            }
+        }
+        
+        @-ms-keyframes cssload-heartR {
+            40% {
+                -ms-transform: scale(0.4);
+            }
+        }
+        
+        @-webkit-keyframes cssload-heartR {
+            40% {
+                -webkit-transform: scale(0.4);
+            }
+        }
+        
+        @-moz-keyframes cssload-heartR {
+            40% {
+                -moz-transform: scale(0.4);
+            }
+        }
+        
+        @keyframes cssload-shadow {
+            50% {
+                transform: scale(0.5);
+                border-color: rgb(228, 228, 228);
+            }
+        }
+        
+        @-o-keyframes cssload-shadow {
+            50% {
+                -o-transform: scale(0.5);
+                border-color: rgb(228, 228, 228);
+            }
+        }
+        
+        @-ms-keyframes cssload-shadow {
+            50% {
+                -ms-transform: scale(0.5);
+                border-color: rgb(228, 228, 228);
+            }
+        }
+        
+        @-webkit-keyframes cssload-shadow {
+            50% {
+                -webkit-transform: scale(0.5);
+                border-color: rgb(228, 228, 228);
+            }
+        }
+        
+        @-moz-keyframes cssload-shadow {
+            50% {
+                -moz-transform: scale(0.5);
+                border-color: rgb(228, 228, 228);
+            }
+        }
+        
+        .shakeit {
+            margin: 0 auto;
+            width: 300px;
+            animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+            animation-iteration-count: 3;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        
+        .shakeit:hover {
+            animation: none;
+            transform: none;
+        }
+        
+        @keyframes shake {
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Ionic's root component and where the app will load -->
+    <ion-app>
+
+        <div id="app">
+            <div class="cssHeartPosition">
+                <div class="cssload-main">
+                    <div class="cssload-heart">
+                        <span class="cssload-heartL"></span>
+                        <span class="cssload-heartR"></span>
+                        <span class="cssload-square"></span>
+                    </div>
+                    <div class="cssload-shadow"></div>
+                </div>
+                <div>Please wait while the hamsters finishing loading the application!</div>
+            </div>
+        </div>
+
+    </ion-app>
+    <div id="barcodeReader1"></div>
+    <div id="start_overlay">
+        <div class="circlepro">
+            <div>{{startCountStr}}</div>
+        </div>
+        <div class="barpro">
+            <div></div>
+            <span>hold book steady</span>
+        </div>
+    </div>
+
+    <!-- Chart Library-->
+    <script src="assets/moxie-chart/lib/d3.min.js"></script>
+    <script src="assets/moxie-chart/lib/d3-tip.js"></script>
+    <script src="assets/moxie-chart/lib/moment.min.js"></script>
+    <script src="assets/moxie-chart/lib/moxiechart.js"></script>
+    <script src="assets/moxie-chart/lib/URI.js"></script>
+
+    <!-- Moxie Scanner -->
+    <script src="assets/jquery-3.1.1.min.js"></script>
+    <script src="assets/moxie-scan-master/lib/jpeg_camera/swfobject.min.js" type="text/javascript"></script>
+    <script src="assets/moxie-scan-master/lib/jpeg_camera/canvas-to-blob.min.js" type="text/javascript"></script>
+    <script src="assets/moxie-scan-master/lib/jpeg_camera/jpeg_camera.min.js" type="text/javascript"></script>
+
+    <!-- scandit-sdk-0.0.1 -->
+    <script src="assets/scandit-sdk/build/browser/index1.min.js"></script>
+    <!-- The polyfills js is generated during the build process -->
+    <script src="build/polyfills.js"></script>
+
+    <!-- The bundle js is generated during the build process -->
+    <script src="build/main.js"></script>
+
+    <!-- minute picker -->
+    <link rel="stylesheet" type="text/css" href="assets/ios-picker/index.css">
+    <script src="assets/ios-picker/jquery.ios.picker.js"></script>
+    <script src="assets/ios-picker/index.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85682795-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-85682795-2');
+    </script>
+</body>
+
+</html>

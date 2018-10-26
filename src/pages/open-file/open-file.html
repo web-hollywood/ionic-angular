@@ -1,0 +1,18 @@
+<ion-header>
+
+    <ion-navbar color="moxie_{{config.mode}}">
+        <ion-title text-center>Show picture</ion-title>
+        
+        <ion-buttons end>
+            <button icon-only ion-button (click)="done()">Done</button>
+        </ion-buttons>
+    </ion-navbar>
+  
+</ion-header>
+  
+<ion-content padding>
+    <div class='div_file'>
+        <img src="{{config.mainURL}}/event/{{data?.id}}/file/{{data?.files[data?.files.length-1].filename}}" />
+    </div>
+    <div class="div_review" [innerHtml]="data?.review"></div>
+</ion-content>

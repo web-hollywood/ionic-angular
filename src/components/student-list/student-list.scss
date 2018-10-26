@@ -1,0 +1,56 @@
+student-list {
+	ion-badge {
+		margin: 0;
+		position: absolute;
+		top: 0px;
+	}
+	.list-avatar {
+		max-height: 55px !important;
+		margin: 0 auto;
+	}
+
+  .edit-text {
+    @include moxie-main-font();
+    color: #93c83d;
+  }
+
+  .group_title{
+    font-weight: bold;
+  }
+
+  .student-title-text {
+    @include moxie-main-font-light(16px);
+    font-style: italic;
+  }
+  .swiper-slide{
+    padding-left: 4px;
+  }
+  ion-list.list{
+    margin-bottom: 5px;
+  }
+
+  .moxie-alert-container {
+    position: absolute;
+    height:20px;
+    top:0;
+    left: 60%;
+    width:20px;
+  }
+
+  .moxie-alert {
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    color:white;
+  }
+
+}
+
+@media (min-width: 768px) {
+  student-list {
+    .list-avatar {
+      max-height: 82px !important;
+    }
+  }
+}

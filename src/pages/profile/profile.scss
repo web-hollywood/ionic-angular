@@ -1,0 +1,11 @@
+page-profile {
+    ion-navbar.toolbar{
+        padding-top: calc(20px + 4px);
+        min-height: calc(44px + 20px);
+    }
+    ion-navbar.toolbar ion-title.title{
+        padding-top: 20px;
+        height: calc(44px + 20px);
+        min-height: calc(44px + 20px);
+    }
+}

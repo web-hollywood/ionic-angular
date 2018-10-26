@@ -1,0 +1,15 @@
+package.json
+tsconfig.json
+typings.json
+package-lock.json
+tslint.json
+node_modules/
+hooks/
+platforms/
+plugins/
+resources/
+scandit-barcodescanner-phonegap_5.3.3/
+scandit-barcodescanner-test-phonegap_5.3.3/
+scandit-sdk-0.9.0/
+typings/
+www/

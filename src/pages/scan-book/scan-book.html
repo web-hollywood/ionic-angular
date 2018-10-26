@@ -1,0 +1,31 @@
+<!--
+<ion-header>
+  <ion-navbar color="moxie">
+  	<button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Scan A Book</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-header *ngIf="config.mode == 'parent'">
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Scan A Book</ion-title>
+    <ion-buttons end>
+    	<button icon-only ion-button (click)="cancel()">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div id="scannerPlaceholder" [style.height]="scannerPlaceholderHeight"></div>
+
+  <div class="div_label" [style.margin-top]="mt">Scan or Search a book</div>
+  <div class="div_buttons" padding>
+    <button ion-button round color="moxie" class="button" (click)="reset()">Reset</button>
+    <button ion-button round color="moxie" class="button" (click)="createBook()">Create</button>
+    <!-- <button ion-button round color="moxie" class="button" (click)="gosearch()"><ion-icon name="search"></ion-icon></button> -->
+  </div>
+  <p text-center no-margin *ngFor="let scannedCode of scannedCodes">({{scannedCode.symbology.toUpperCase()}}) {{scannedCode.data}}</p>
+
+</ion-content>

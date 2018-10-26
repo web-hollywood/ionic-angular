@@ -1,0 +1,647 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// '../components/ion-digit-keyboard/ion-digit-keyboard.scss'
+
+ion-searchbar {
+
+
+    padding: 6px 55px;
+    height: auto;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 3rem;
+    color: #ff0000;
+    background-color: #fff;
+    background-position: 8px center;
+    /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);*/
+}
+
+
+input::-webkit-input-placeholder {
+  color: #787878 !important;
+}
+input:-moz-placeholder {
+  color: #787878 !important;
+}
+input:-ms-input-placeholder { /* IE10+ */
+  color: #787878 !important;
+}
+
+
+ion-split-pane{
+	ion-menu{
+		ion-content{
+			ion-list{
+				background-color: #93c83d;
+				.item-md{
+					background-color: transparent;
+				}
+				.item-ios{
+					background-color: transparent;
+				}
+				ion-item{
+					background-color: white!important;
+				}
+			}
+      ion-list.moxie_teacher{
+        background-color: #93c83d;
+      }
+      ion-list.moxie_class{
+        background-color: #558dca;
+      }
+      ion-list.moxie_parent{
+        background-color: #93c83d;
+      }
+		}
+	}
+}
+
+#barcodeReader1{
+    height: 480px;
+    width: 640px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 64px;
+    display: none;
+}
+#start_overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.0);
+    color: #fff;
+    display: none;
+    width: 300px;
+    height: 50px;
+    left: calc(50% - 150px);
+    top: calc(50% - 20px);
+}
+.barpro{
+    width: 300px;
+    height: 50px;
+    border: 5px solid #fff;
+    border-radius: 25px;
+    left: calc(50% - 150px);
+    top: calc(50% - 20px);
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    display: none;
+}
+.barpro span{
+    font-family: "Alegreya Sans", sans-serif;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.barpro div{
+    background: #93c83d;
+    width: 100%;
+    height: 100%;
+}
+.circlepro{
+    width: 120px;
+    height: 120px;
+    border: 0px solid #fff;
+    border-radius: 120px;
+    left: calc(50% - 60px);
+    top: calc(50% - 120px);
+    position: absolute;
+    display: none;
+}
+.circlepro div{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 10px;
+}
+
+
+.toolbar-content {
+  ion-title.title-md {
+    font-family: $moxie-font;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 60px;
+    left: 60px;
+    text-align: center;
+    font-weight: 100 !important;
+    .toolbar-title-md {
+      font-weight: 300;
+    }
+  }
+}
+ion-title.title-ios{
+  .toolbar-title-ios{
+    font-family: $moxie-font;
+    font-weight:300;
+  }
+}
+
+// This shouldn't be set here as it effects all the scroll-content elements in the app
+/*
+.scroll-content{
+	margin-bottom: 0px !important;
+}
+*/
+
+
+.toast-message {
+  color: #3c763d !important;
+  background: #dff0d8 !important;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: $moxie-font;
+}
+.toast-message.toast-message-1{
+  background: #558dca !important;
+  color: #fff !important;
+}
+.toast-message.toast-message-2{
+  background: #cb3494 !important;
+  color: #fff !important;
+}
+.toast-message.toast-message-3{
+  background: #f26722 !important;
+  color: #fff !important;
+}
+.toast-message.toast-message-4{
+  background: #ff8b00 !important;
+  color: #fff !important;
+}
+.toast-message.toast-message-5{
+  background: #ffdb00 !important;
+  color: #f26722 !important;
+}
+
+.fadeOutMoxie {
+   opacity: 0;
+   transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.fadeInitialState {
+   opacity: 0;
+   transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.fadeInMoxie {
+   opacity: 1;
+}
+@media (min-width: 768px) {
+  ion-modal .modal-wrapper{
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  ion-modal .modal-wrapper{
+    position: absolute;
+    top: calc(50% - (700px/2));
+    left: calc(50% - (600px/2));
+    width: 600px;
+    height: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  ion-modal .modal-wrapper {
+    top: calc(50% - (760px/2));
+    left: calc(50% - (600px/2));
+    width: 600px;
+    height: 760px;
+  }
+}
+
+
+ion-searchbar{
+  .searchbar-input {
+    background-color: white!important;
+    border-radius: 8px!important;
+    color: black !important;
+  }
+
+}
+
+.toolbar-ios-moxie_teacher .searchbar-ios .searchbar-search-icon,
+.toolbar-ios-moxie_class .searchbar-ios .searchbar-search-icon,
+.toolbar-ios-moxie_parent .searchbar-ios .searchbar-search-icon   {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013%2013'><path%20fill='rgba(0,0,0,0.5)'%20d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1%20M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0%20L5,0z'/><line%20stroke='rgba(0,%200,%200,%200.5)'%20stroke-miterlimit='10'%20x1='12.6'%20y1='12.6'%20x2='8.2'%20y2='8.2'/></svg>");
+  position: absolute;
+  top: 9px;
+  margin-left: 0px!important;
+  left: 9px;
+  color: red;
+  margin-left: calc(50% - 60px);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-size: 13px;
+}
+.toolbar-ios-moxie_teacher .searchbar-ios .searchbar-clear-icon,
+.toolbar-ios-moxie_class .searchbar-ios .searchbar-clear-icon,
+.toolbar-ios-moxie_parent .searchbar-ios .searchbar-clear-icon  {
+ background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='0,0,0,0.5 ' d='M403.1,108.9c-81.2-81.2-212.9-81.2-294.2,0s-81.2,212.9,0,294.2c81.2,81.2,212.9,81.2,294.2,0S484.3,190.1,403.1,108.9z M352,340.2L340.2,352l-84.4-84.2l-84,83.8L160,339.8l84-83.8l-84-83.8l11.8-11.8l84,83.8l84.4-84.2l11.8,11.8L267.6,256L352,340.2z'/></svg>");
+  position: absolute;
+  top: 9px;
+  margin-left: 0px!important;
+  right: 9px;
+  color: red;
+  margin-left: calc(50% - 60px);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-size: 13px;
+}
+
+.toolbar-ios-moxie .searchbar-ios .searchbar-search-icon  {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013%2013'><path%20fill='rgba(0,0,0,0.5)'%20d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1%20M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0%20L5,0z'/><line%20stroke='rgba(0,%200,%200,%200.5)'%20stroke-miterlimit='10'%20x1='12.6'%20y1='12.6'%20x2='8.2'%20y2='8.2'/></svg>");
+  position: absolute;
+  top: 9px;
+  margin-left: 0px!important;
+  left: 9px;
+  color: red;
+  margin-left: calc(50% - 60px);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-size: 13px;
+}
+.toolbar-ios-moxie .searchbar-ios .searchbar-clear-icon {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='0,0,0,0.5 ' d='M403.1,108.9c-81.2-81.2-212.9-81.2-294.2,0s-81.2,212.9,0,294.2c81.2,81.2,212.9,81.2,294.2,0S484.3,190.1,403.1,108.9z M352,340.2L340.2,352l-84.4-84.2l-84,83.8L160,339.8l84-83.8l-84-83.8l11.8-11.8l84,83.8l84.4-84.2l11.8,11.8L267.6,256L352,340.2z'/></svg>");
+  position: absolute;
+  top: 9px;
+  margin-left: 0px!important;
+  right: 9px;
+  color: red;
+  margin-left: calc(50% - 60px);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-size: 13px;
+}
+
+
+ion-app {
+  .loading-ios .loading-wrapper,
+  .loading-md .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    .loading-spinner .spinner line {
+      stroke: white;
+    }
+    .spinner-crescent circle {
+      stroke: white;
+    }
+  }
+}
+
+
+/*======= nav bar ======*/
+ion-header ion-navbar.toolbar:first-child {
+    padding-top: calc(20px + 4px);
+    min-height: calc(44px + 20px);
+}
+ion-header ion-navbar.toolbar:first-child ion-title.title {
+    padding-top: 20px;
+    height: calc(44px + 20px);
+    min-height: calc(44px + 20px);
+}
+
+ion-avatar.home_avatar{
+  position: fixed;
+  right: 5px;
+  top: 25px;
+  height: 10px;
+  z-index: 9999;
+}
+ion-avatar.home_avatar img{
+  width: 30px;
+  height: 30px;
+}
+
+ion-alert.propmt-alert.alert-top {
+  padding-top: 0;
+  .alert-wrapper {
+    align-self: center;
+    margin-top: -90px;
+  }
+}
+
+//ngx swiper custom
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled{
+  opacity: 0;
+}
+.swiper-button-prev, 
+.swiper-button-next{
+  background-size: 17px 44px;
+  width: 17px;
+  top: 80px;
+}
+.swiper-button-prev{
+  left: 1px;
+}
+.swiper-button-next{
+  right: 1px;
+}
+.swiper-slide{
+  justify-content: left;
+  padding-left: 25px;
+  display: block;
+}
+.swiper-slide feed-item{
+  max-width: calc(100% - 50px);
+}
+.customLoading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(255,255,255,0.8);
+  z-index: 99;
+}
+.customLoading div{
+  position: absolute;
+  top: 100px;
+  width: 80px;
+  height: 80px;
+  left: calc(50% - 40px);
+  text-align: center;
+}
+
+
+.dialog_overlay.showdialog{
+  display: block;
+}
+.dialog_overlay{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: transparent;
+  display: none;
+}
+.dialog{
+  position: absolute;
+  width: 320px;
+  height: 300px;
+  left: calc(50% - 160px);
+  top: calc(50% - 150px);
+  overflow: hidden;
+  background: rgba(245, 245, 245, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+}
+.dialog:before{
+  z-index: -1;
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+.dialog ion-label{
+  font-family: 'Alegreya Sans Medium';
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
+.dialog ion-label.title{
+  color: #558dca;
+  text-align: center;
+  font-size: 40px;
+  font-style: italic;
+  font-family: 'Alegreya Sans Medium';
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#dialog_overlay_finish .desc,
+#dialog_overlay_finish1 .desc{
+  white-space: normal;
+}
+.dialog_overlay .desc1,
+.dialog_overlay .desc2{
+  white-space: normal;
+  max-height: 96px;
+  overflow-y: hidden;
+}
+#dialog_overlay_finish ion-label.title,
+#dialog_overlay_finish1 ion-label.title{
+  padding-top: 0px;
+}
+.dialog .row{
+  margin-top: 20px;
+  margin-left: 30px;
+}
+#dialog_overlay_finish .row,
+#dialog_overlay_finish1 .row{
+  margin-left: 0;
+}
+#dialog_overlay_finish .inputbox,
+#dialog_overlay_finish1 .inputbox{
+  height: 80px !important;
+  width: 100% !important;
+  max-height: 80px !important;
+  max-width: 100% !important;
+  min-height: 80px !important;
+  min-width: 100% !important;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+.dialog .row input, 
+.dialog .row div.inputlabel{
+  float: left;
+  font-size: 40px;
+  color: #558dca;
+  font-family: 'Alegreya Sans Medium';
+  letter-spacing: 2px;
+  outline: 0;
+  border: 0px;
+  background: transparent;
+}
+.dialog .row input{
+  width: 100px;
+  border-bottom: 2px solid #558dca;
+  margin-right: 10px;
+  text-align: right;
+}
+.row1{
+  margin-top: 40px;
+  text-align: center;
+}
+#dialog_overlay_finish .row1,
+#dialog_overlay_finish1 .row1{
+  margin-top: 20px;
+}
+.dialog .sbutton{
+  background: #558dca;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 16px 0px;
+  width: 120px;
+  border-radius: 10px;
+  letter-spacing: 0;
+  font-weight: bold;
+  float: left;
+  font-family: 'Alegreya Sans Medium';
+}
+.dialog .sbutton:last-child{
+  float: right;
+}
+select#pagehour,
+select#pageminute,
+select#pagehour_finish1,
+select#pageminute_finish1,
+select#removereason{
+  font-size: 30px;
+  width: 90px;
+  font-family: 'Alegreya Sans Medium';
+  margin: 0px 5px;
+  height: 40px;
+  margin-top: 80px;
+}
+select#pageminute,
+select#pageminute_finish1{
+  margin-left: 10px;
+}
+#dialog_overlay_minute .row span,
+#dialog_overlay_finish1_minute .row span {
+  font-size: 30px;
+  padding-top: 85px;
+  font-family: 'Alegreya Sans Medium';
+}
+#dialog_overlay_minute .row,
+#dialog_overlay_finish1_minute .row{
+  margin-left: 0px;
+}
+select#removereason{
+  font-size: 24px;
+  width: 260px;
+  margin-left: -20px;
+  margin-top: 20px;
+}
+#bt_ok,
+#bt_ok1{
+  position: absolute;
+  bottom: 20px;
+  left: 100px;
+  display: none;
+}
+.sec_cont1{
+  display: none;
+}
+span.sb{
+  display: none;
+}
+.output{
+  display: none;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.customLoading div:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
+
+@media (max-height: 760px){
+  ion-modal .modal-wrapper {
+    top: 0px;
+    left: calc(50% - (600px/2));
+    width: 600px;
+    height: 100%;
+  }
+  ion-modal ion-backdrop{
+    visibility: visible;
+  }
+  ion-digit-keyboard{
+    max-height: calc(100% - 60px);
+  }
+  ion-modal .ion-page .scroll-content{
+    overflow-y: auto;
+  }
+}
+@media (max-width: 767px){
+  ion-modal .modal-wrapper {
+    width: 100%;
+  }
+  ion-modal ion-backdrop{
+    visibility: hidden;
+  }
+  .dialog .row input{
+    margin-top:0px;
+    padding: 0px;
+  }
+  .dialog ion-label.title{
+    font-size: 34px;
+  }
+  .dialog .sbutton{
+    font-size: 16px;
+  }
+}
+@media (max-height: 790px){  
+  #barcodeReader1 {
+    height: calc(100% - 300px) !important;
+    width: auto;
+  } 
+  #barcodeReader{
+    height: calc(100% - 180px) !important;
+  }
+  page-scan-book-web #div_search {
+    padding-top: 0px !important;
+  }
+}

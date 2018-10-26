@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar  color="moxie_{{config.mode}}">
+    <ion-title>Tub Content List</ion-title>
+		<ion-buttons *ngIf = "!fromMyClassLibrary" end>
+    	<button icon-only ion-button (click)="done()">Done</button>
+    	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<div >
+		<ion-list>
+			<tub-item *ngFor="let log of filtered_tub_books; let i = index;" [data]="log" (onClick)="openDetail($event)" (select)="selectBook($event)" (cheer)="cheerBook($event)" (share)="shareBook($event)" (removeBook)="removeBookTub($event, i)">
+			</tub-item>
+		</ion-list>
+	</div>
+
+
+</ion-content>

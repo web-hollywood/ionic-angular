@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>{{mode_title}} View</ion-title>
+  </ion-navbar>
+  <ion-navbar color="moxie_{{config.mode}}" *ngIf="false && config.mode == 'class'"> 
+	<ion-searchbar #q  debounce="400" [(ngModel)]="searchValue" (keyup.enter)="getSearchBook(q.value)" (search)="searchBook($event.target.value)" (ionInput)="searchBook($event.target.value)" placeholder="{{config.searchPlaceholder}}"  (ionBlur)="checkBlur()" autocomplete="on" (ionFocus)="searchBook('')" id="searchbar-ios">
+  	</ion-searchbar>
+  </ion-navbar>
+	<div id="autocomplete" *ngIf = "view_Flag && (((search_flag == 'history') && (search_items.length > 0)) || ((search_flag == 'auto_complete') ))">
+		<ion-list *ngIf = "search_flag == 'history'">
+			<ion-item *ngFor="let item of search_items" (click)="itemClick(item.data?.q)">
+			 	{{ item.data?.q }}
+			</ion-item>
+		</ion-list>
+		<ion-list *ngIf = "search_flag == 'auto_complete'">
+			<ion-item *ngFor="let item of auto_complete_items.authors" (click)="itemClick(item)">
+			 	{{ item }}   <h3 style="float: right;font-style: italic;">Authors</h3>
+			</ion-item>
+			<ion-item *ngFor="let item of auto_complete_items.series" (click)="itemClick(item)">
+			 	{{ item }}	 <h3 style="float: right;font-style: italic;">series</h3>
+			</ion-item>
+			<ion-item *ngFor="let item of auto_complete_items.title" (click)="itemClick(item)">
+			 	{{ item }}   <h3 style="float: right;font-style: italic;">title</h3>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-header>
+
+<ion-content (click) = "{}" padding>
+	<student-list [type]="config.mode === 'teacher'? 'advance' : 'simple'"  *ngIf="selectedClass" (addEvent)="addStudent($event)" (selectStudent)="studentProfile($event)" (editClass)="openEditClass($event)" [list]="selectedClass"></student-list>
+
+	<!-- Class Cycle Information -->
+	<ion-item *ngIf="config.mode === 'teacher' || config.mode === 'class'">
+		<div id="readchallenge"></div>
+		<ion-card padding *ngIf="false">
+			<ion-grid text-center>
+				<ion-row text-left><ion-col><h1><span class="moxie-main-text-header">Reading {{selectedClass.cycle?.title}} - Week {{selectedClass.cycle?.weeks}}</span> </h1></ion-col></ion-row>
+				<ion-row class="moxie-summary-card">
+					<ion-col>Books</ion-col>
+					<ion-col>Pages</ion-col>
+					<ion-col>Moxie</ion-col>
+				</ion-row>
+				<ion-row class="moxie-summary-card-results">
+					<ion-col class="font-number">{{selectedClass.cycle?.books}}</ion-col>
+					<ion-col class="font-number">{{selectedClass.cycle?.pages}}</ion-col>
+					<ion-col class="font-number">{{selectedClass.cycle?.points}}</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card>
+		<button ion-button block color="moxie" *ngIf="0 && mode !='teacher' && mode !='class' ">Weekly Check-in</button>
+	</ion-item>
+
+	<ion-list>
+		<feed-item *ngFor="let book of books" [data]="{book:book}" (onClick)="openDetail($event)"></feed-item>
+	</ion-list>
+	<ion-list *ngIf="mode === 'teacher'">
+		<feed-item advance="true" *ngFor="let feed of book_list_items" [data]="feed" [classfeed]='true'
+               (onClick)="openDetail($event)"
+               (select)="selectBook($event)"
+               (cheer)="cheerBook($event)"
+               (share)="shareBook($event)"
+               (viewStudent)="viewStudent($event)"
+               (removeBook)="removeBook($event)"
+			   canRemoveBook="true" 
+			   (editReview)="goreviewall($event)"
+			   (openFile)="openFile($event)"
+    	>
+		</feed-item>
+	</ion-list>
+	<ion-infinite-scroll *ngIf="mode === 'teacher'" (ionInfinite)="doInfinite_list($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>
+

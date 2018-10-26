@@ -1,0 +1,64 @@
+<ion-item no-lines *ngIf="type !== 'nolabel'">
+	<span class="moxie-main-text-header">{{list.class?.title}}</span>
+	<h1 class="edit-text" *ngIf="type === 'advance'" item-right tappable (click)="edit()"><ion-icon name="md-settings"></ion-icon></h1>
+
+</ion-item>
+
+<ng-container *ngIf="list.readinggroups?.length" #mainContainer>
+
+	<ion-list *ngFor="let group of list.readinggroups; let i = index">
+		<ion-item no-lines>
+			<span class="moxie-main-text-light group_title" margin-bottom>{{(group)?.title}}</span>
+		</ion-item>
+
+		<div class="swiper-container" [swiper]="config_swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" *ngFor="let student of group.students" [style.maxWidth.px]="maxWidth">
+					<div *ngIf="student.badge && type === 'advance'">
+						<div class="moxie-alert-container" *ngIf="student.badge === 'star'">
+							<img class="moxie-alert" src="assets/images/star.png">
+						</div>
+						<div class="moxie-alert-container" *ngIf="student.badge === 'alert'">
+							<img class="moxie-alert" src="assets/images/alert.png">
+						</div>
+					</div>
+					<ion-avatar text-center tappable (click)="select(student)">
+						<img class="list-avatar" [src]="student.avatar" [style.maxWidth.px]="maxWidth">
+					</ion-avatar>
+					<span class="student-title-text">{{student.title}}</span>
+				</div>
+			</div>
+		</div>
+	</ion-list>
+
+</ng-container>
+
+<ng-container *ngIf="mode === 'parent'" #mainContainer>
+
+	<ion-list *ngFor="let student of list.students">
+		<ion-item no-lines>
+			<span class="moxie-main-text-light group_title" margin-bottom>{{student.classroom_title}}</span>
+		</ion-item>
+
+		<ks-swiper-container [options]="options" >
+			<ks-swiper-slide [style.maxWidth.px]="maxWidth" *ngFor="let temp of ['temp']" >
+				<div tappable (click)="select(student)">
+				<div *ngIf="student.badge && type === 'advance'">
+						<div class="moxie-alert-container" *ngIf="student.badge === 'star'">
+							<img class="moxie-alert" src="assets/images/star.png">
+						</div>
+						<div class="moxie-alert-container" *ngIf="student.badge === 'alert'">
+							<img class="moxie-alert" src="assets/images/alert.png">
+						</div>
+				</div>
+				<ion-avatar text-center>
+					<img class="list-avatar" [src]="student.avatar">
+				</ion-avatar>
+				<span class="student-title-text">{{student.title}}</span>
+				</div>
+			</ks-swiper-slide>
+		</ks-swiper-container>
+
+	</ion-list>
+
+</ng-container>

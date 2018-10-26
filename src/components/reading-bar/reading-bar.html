@@ -1,0 +1,93 @@
+
+    <div class="div_reading">
+		<div class="sh_v" *ngIf="isDownArrow" (click)="shReading()"><img src="assets/images/down-arrow-icon.png"></div>
+		<div class="div_reading_wrapper fadeIn" id="sh_v" > <!-- [ngClass]="{'fadeIn':shv}" -->
+			<ion-item no-lines>
+				<ion-range disabled="true" [ngModel]="rbook.pages" min="0" [max]="rbook.book.pages">
+				</ion-range>
+			</ion-item>
+			<div class="div_curpage">
+				<div class="div_reading_history" *ngIf="shv" (click)="history()">
+					<ion-row *ngIf="reads != 0">
+						<ion-col col-2 *ngIf="isreadmin">
+							<div>Reads</div>
+							<div *ngIf="0" class='read_num'>{{evReading?.reads}}</div>
+						</ion-col>
+						<ion-col col-3 *ngIf="isreadmin">
+							<div>Page #</div>
+							<div *ngIf="0" class='read_num'>{{evReading?.avg}}</div>
+						</ion-col>
+						<ion-col col-2 *ngIf="isreadmin">
+							<div>Min</div>
+							<div *ngIf="0" class='read_num'>{{evReading?.min}}</div>
+						</ion-col>
+						<ion-col col-3 *ngIf="isreadmin">
+							<div>Last</div>
+							<div class='read_num' *ngIf="0 && evReading && evReading.reads == 0"></div>
+							<div class='read_num' *ngIf="0 && evReading && evReading.reads != 0">{{getDate(evReading?.last) | amTimeAgo}}</div>
+						</ion-col>
+						<ion-col col-2 *ngIf="isreadmin">
+							<div text-right class='read_num font-number'>Pages<br/>{{rbook?.pages}}/{{rbook?.book.pages}}</div>
+						</ion-col>
+						<ion-col col-12 *ngIf="!isreadmin">
+							<div text-right class='read_num font-number'>Pages<br/>{{rbook?.pages}}/{{rbook?.book.pages}}</div>
+						</ion-col>
+					</ion-row>
+					<div *ngIf="reads != 0 && logHistory.length > 0">
+						<ion-row class='row_history' *ngFor="let item of logHistory; let i=index">
+							<ion-col col-2>
+								{{item.event_count}}
+							</ion-col>
+							<ion-col col-3>
+								{{item.pages}}
+							</ion-col>
+							<ion-col col-2>
+								{{item.minutes}}
+							</ion-col>
+							<ion-col col-3>
+								{{getDate(item.created_at) | amTimeAgo}}
+							</ion-col>
+							<ion-col col-2 text-center>
+								<ion-icon name="close" tappable style="cursor: pointer" (click)="removeCurrentEvent(item, i)"></ion-icon>
+							</ion-col>
+						</ion-row>
+					</div>
+					<ion-row *ngIf="reads == 0">
+						<ion-col col-10>
+						</ion-col>
+						<ion-col col-2>
+							<div text-right class='read_num font-number'>Pages<br/>{{rbook?.pages}}/{{rbook?.book.pages}}</div>
+						</ion-col>
+					</ion-row>
+				</div>
+
+				<ion-row *ngIf="false">
+					<ion-col col-4>
+						<ion-select [(ngModel)]="rmin" *ngIf="isreadmin" style="padding:11px 8px 11px 3px;">
+							<ion-option value="" disabled selected>Minutes</ion-option>
+							<ion-option *ngFor="let item of readminAry; let i=index;" value="{{item.min}}">{{item.val}}</ion-option>
+						</ion-select>
+					</ion-col>
+					<ion-col col-4>
+							<ion-input type="tel" class="pagenumber font-number" [(ngModel)]="pageNum" #bookPages placeholder="Page No."  id="inputpage"></ion-input>
+					</ion-col>
+					<ion-col col-4 text-right>
+						<button [ngClass]="{'animated bounceIn' : animateState}" ion-button (click)="updateReading(rbook, rmin)" color="moxie_class">Update</button>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						<ion-label *ngIf="isreadmin" class="rmin">{{rmin}} Mins</ion-label>
+					</ion-col>
+					<ion-col col-4 class='col-button'>
+						<button *ngIf="rbook && (rbook.pages != '') && rbook.pages != null" [ngClass]="{'animated bounceIn' : animateState}" ion-button (click)="updateReading(rbook, rmin)" class="none" color="moxie_class" id="bt_add_page"><b>{{rbook?.pages}}</b>&nbsp;pages</button>
+						<button *ngIf="rbook && (rbook.pages == '') || rbook.pages == null" [ngClass]="{'animated bounceIn' : animateState}" ion-button (click)="updateReading(rbook, rmin)" class="none" color="moxie_class" id="bt_add_page"><b>Add</b>&nbsp;page #</button>
+					</ion-col>
+					<ion-col col-4>
+						<button [ngClass]="{'animated bounceIn' : animateState1}" *ngIf="isFinish && !isbooklogging" ion-button (click)="finishReading(rbook, rmin)" color="moxie_class" style="float:right">Finish</button>
+					</ion-col>
+				</ion-row>
+			</div>
+
+		</div>
+	</div>

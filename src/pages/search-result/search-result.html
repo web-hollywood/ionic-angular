@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-title>Search Books</ion-title>
+  </ion-navbar>
+  <ion-navbar color="moxie_{{config.mode}}">
+    <ion-searchbar #q debounce="400" [(ngModel)]="searchValue" (keyup.enter)="search(q.value)" (search)="searchBook($event.target.value)"
+      (ionInput)="searchBook($event.target.value)" placeholder="{{config.searchPlaceholder}}" (ionBlur)="checkBlur()" (ionFocus)="searchBook('')"
+      autocomplete="on">
+      </ion-searchbar>
+  </ion-navbar>
+  <div id="autocomplete3" class="autocomplete2" *ngIf="view_Flag && (((search_flag == 'history') && (search_items.length > 0)) || ((search_flag == 'auto_complete') ))">
+    <ion-list *ngIf="search_flag == 'history'">
+      <ion-item *ngFor="let item of search_items" (click)="itemClick(item.data?.q)">
+        {{ item.data?.q }}
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="search_flag == 'auto_complete'">
+      <ion-item *ngFor="let item of auto_complete_items.authors" (click)="itemClick(item)">
+        {{ item }}
+        <h3 style="float: right;font-style: italic;">Authors</h3>
+      </ion-item>
+      <ion-item *ngFor="let item of auto_complete_items.series" (click)="itemClick(item)">
+        {{ item }}
+        <h3 style="float: right;font-style: italic;">series</h3>
+      </ion-item>
+      <ion-item *ngFor="let item of auto_complete_items.title" (click)="itemClick(item)">
+        {{ item }}
+        <h3 style="float: right;font-style: italic;">title</h3>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-header>
+
+
+<ion-content padding>
+  <div class='div_meta'>
+    <div class="msg">{{message}}</div>
+    <div class='div_range'>
+      <!-- <ion-label style="float: left; font-size: 18px">Popular <span class='quality'>{{config.qualityValue}}</span></ion-label> -->
+      <ion-range min="0" max="5" [(ngModel)]="config.qualityValue" color="secondary" snaps="true" (ionChange)="changeSlider()">
+        <ion-label range-left>Less Familiar</ion-label>
+        <ion-label range-right style="margin-left: 20px;">More Familiar</ion-label>
+      </ion-range>
+    </div>
+    <div class="div_grade">
+      <div class="div_grade_wrapper">
+        <div class="grade_item" *ngFor="let item of graderange; let i=index;" [ngClass]="(item.grade==grade) ? 'sel' : ''" [ngStyle]="{'border-right': ((i<graderange.lenth-1) && '1px solid #ccc')}"
+          (click)="clickGrade(item)">
+          {{item.text}}
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class='liner'></div>
+
+  <ng-container *ngIf="books!=undefined && books.length>0">
+    <feed-item *ngFor="let book of book_list_items" [data]="{book:book}" (click)="openDetail_list(book)"></feed-item>
+  </ng-container>
+  <ion-infinite-scroll (ionInfinite)="doInfinite_list($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ng-container *ngIf="books==undefined || books.length==0">
+    <!-- <h5>The hamsters have been searching for {{keyword}} but are having trouble finding your book. Maybe change what your are searching for and try again.</h5> -->
+    <h5>Change the search grade and slider to see more results</h5>
+  </ng-container>
+</ion-content>

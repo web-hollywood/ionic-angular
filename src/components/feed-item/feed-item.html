@@ -1,0 +1,183 @@
+<div [ngClass]="data?.book?.animateRemove ? 'fadeOutMoxie' : ''">
+  <div [ngClass]="(reviews > 0 && showReviewArrow) ? 'noline' : ''">
+    <ion-item class="s_title" [ngClass]="ishome ? 'item_home' : ''" text-wrap *ngIf="data && data.book" [ngStyle]="{'opacity': ((data.card_type=='history' || data.card_type=='incomplete') && '0.5') || 1, 'overflow': ((data.card_type=='history' || data.card_type=='readaloud' || data.card_type=='incomplete') && 'visible'), 'margin-top': ((data.card_type=='history') && '5px')}">
+      <div class="ribbon" *ngIf="data.card_type == 'history'"><span>History</span></div>
+      <div class="ribbon" *ngIf="data.card_type == 'readaloud'"><span>Read Aloud</span></div>
+      <div class="ribbon blue" *ngIf="data.card_type == 'incomplete'"><span>Stopped</span></div>
+      <button *ngIf="canRemoveBook" class="dropdown" tappable (click)="presentPopover($event, data.book)">
+    <img src="assets/images/down-arrow-icon.png">
+  </button>
+      <ion-thumbnail tappable (click)="bookClick(data.book)" item-left>
+        <div class="class-library-banner" *ngIf="hasTub()">CLASS LIBRARY</div>
+        <img class="book-cover" src="{{config.mainURL}}/book/{{data.book?.id}}/cover">
+      </ion-thumbnail>
+
+      <ion-item *ngIf="advance && !bookReview" no-padding no-lines>
+        <ion-avatar *ngIf="data.student && data.student_id" tappable (click)="studentClick(data.student)" item-left>
+          <img src="{{config.mainURL}}/class/{{config.class_id}}/student/{{data.student.id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+        </ion-avatar>
+        <ion-avatar *ngIf="!data.student" item-left>
+          <img src="assets/images/user.png" />
+        </ion-avatar>
+        <h2 *ngIf="data.student">{{data.student.title}}</h2> {{data.title}}
+        <h4 class="font-number">{{getDate(data.datetime) | amTimeAgo}}</h4>
+      </ion-item>
+
+      <ion-item *ngIf="isSelected && data.other_student" no-padding no-lines>
+        <ion-avatar *ngIf="data.student && data.student_id" tappable (click)="studentClick(data.student)" item-left>
+          <img src="{{config.mainURL}}/class/{{config.class_id}}/student/{{data.other_student.id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+        </ion-avatar>
+        <ion-avatar *ngIf="!data.student" item-left>
+          <img src="assets/images/user.png" />
+        </ion-avatar>
+        <h2 *ngIf="data.student">{{data.other_student.title}}</h2> {{data.title}}
+        <h4 class="font-number">{{getDate(data.datetime) | amTimeAgo}}</h4>
+      </ion-item>
+
+      <ion-item no-padding no-lines *ngIf="data && data.card_type == 'select' && data.user_type == 'teacher' && !bookReview ">
+        <ion-avatar item-left>
+          <img src="assets/images/user.png" />
+        </ion-avatar>
+        {{data.title}}
+        <h4 class="font-number">{{getDate(data.datetime) | amTimeAgo}}</h4>
+      </ion-item>
+      <h2 class="h2_book_title">
+        {{data.book.title | limitCharactersOnSmallDevices}}
+      </h2>
+      <h4 *ngIf="(!data.student && data.datetime) || showDate">{{getDate(data.datetime) | amTimeAgo}} <span class='est_min' *ngIf="data.minutes">{{convert_to_minutes_hours(data.minutes)}}</span></h4>
+      <h3 class="book_author">by {{(data.book?.contributors[0])?.name_display}}</h3>
+      <h3 class="book_series" *ngIf="data.series && series != ''"><b>Series</b>: {{data.series}}</h3>
+      <span *ngIf="is_showable(data.book)">
+    <ion-badge class="book_genre" color="moxie" >{{data.book?.primary_genre}}</ion-badge>
+    <ion-badge color="moxie" class='captalize' *ngIf="!data.book?.supergenre && supergenre != ''" >{{data.supergenre}}</ion-badge>
+    </span>
+      <ion-badge color="moxie" class='captalize' *ngIf="!data.book?.supergenre && supergenre != ''">{{data.book?.supergenre}}</ion-badge>
+      <ion-row class="book_level">
+        <span class="bold-span" *ngIf="data.book.grade && data.book.grade.max" style="font-size: 12px;padding-top: 2px;">Grade: </span>
+        <ion-badge color="light">
+          {{data.book.grade?.min}} - {{data.book.grade?.max}}
+        </ion-badge>
+        <ion-badge color="light" *ngIf="data.book?.readingprogram.guidedReading">{{data.book?.readingprogram.guidedReading.guidedReadingLevel}}</ion-badge>
+        <ion-badge color="light" *ngIf="!data.book?.readingprogram.guidedReading">{{data.book?.readingLevel}}</ion-badge>
+        <ion-badge color="light">{{data.book.readingprogram.lexile?.textmeasure}}</ion-badge>
+        <ion-badge color="light">{{data.book.readingprogram.acceleratedReader?.readingLevel}}</ion-badge>
+        <span class="no-padding push-b-3"><span class = "bold-span">Pages</span>: <span class="font-number">{{data.book?.pages}}</span></span>
+      </ion-row>
+      <ion-row>
+        <rating class="book_rating" [(ngModel)]="data.book.rating" readOnly="true"></rating>
+      </ion-row>
+      <div class='reviewlb' *ngIf="!disableReview">
+        <span *ngIf="reviews == 0">No Review yet</span>
+        <span *ngIf="reviews > 0">
+        <span *ngIf="!isfeed"><b>{{reviews}}</b> Reviews</span>
+        <span *ngIf="isfeed">Reviewed</span>
+        </span>
+        <ion-icon *ngIf="((data.stmode == 'class' || data.stmode == 'teacher') && data.isedit) || isedit" name="ios-create-outline"
+          tappable (click)="reviewClick(data.book)"></ion-icon>
+          <img *ngIf="0 && reviews > 0 && showReviewArrow" src="assets/images/down-arrow-icon.png" class="review_down" tappable (click)="clickReviewDown()"
+          />
+      </div>
+
+      <div class="div_loghours" *ngIf="data.stmode == 'class' && data.lastread != null && data.lastread != ''">Read {{getDate(data.lastread) | amTimeAgo}} </div>
+
+      <div *ngIf="data.card_type=='incomplete'" class="reason">{{data.reason}}</div>
+    </ion-item>
+  </div>
+</div>
+
+<ion-item *ngIf="(reviewList.length > 0 || showReview) && visibleReview">
+  <div class="swiper-container review-swiper" [swiper]="config_swiper" (indexChange)="onIndexChange($event)">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let item of reviewList; let i = index;">
+        <review-card *ngIf="!bookReview" [data]="item" [studenttitle]="data.student.title" [isfeed]="isfeed" [canRemoveReview]="(config.mode == 'teacher')"
+          (selectReview)="reviewClick(data.book, i, item)" (editReview)="reviewClick(data.book, i, item)" (removeReview)="removeReview($event, i)" (openFile)="clickFile($event)"></review-card>
+        <review-card *ngIf="bookReview" [data]="item" [studenttitle]="item.student.title" [isfeed]="isfeed" [canRemoveReview]="(config.mode == 'teacher')"
+          (selectReview)="reviewClick(data.book, i, item)" (editReview)="reviewClick(data.book, i, item)" (removeReview)="removeReview($event, i)" (openFile)="clickFile($event)"></review-card>
+      </div>
+    </div>
+    <div *ngIf="!isfeed || isGroupFeed" class="swiper-button-prev"></div>
+    <div *ngIf="!isfeed || isGroupFeed" class="swiper-button-next"></div>
+  </div>
+</ion-item>
+
+<ion-item *ngIf="data.actions && !data.isclass" class="data_action">
+  <ion-grid>
+    <!-- cheer -->
+    <ion-row>
+      <ion-col class="feed-column-fixed-width">
+        <div class="action-items">
+          <ng-container *ngFor="let action of data.actions">
+            <div tappable [ngClass]="{'animated bounceIn' : animateSelectState}" class="select-action" *ngIf="action.type === 'select' "
+              (click)="selectEvent()">
+              <ion-icon [ngClass]="{'icon-active': action.done}" name="ios-checkbox-outline"></ion-icon>
+            </div>
+          </ng-container>
+          <ng-container *ngFor="let action of data.actions">
+            <div tappable class="share-action" *ngIf="action.type ==='share'" (click)="shareEvent()">
+              <ion-icon [ngClass]="{'animated bounceIn' : animateShareState, 'icon-active': action.done}" name="ios-share-outline"></ion-icon>
+            </div>
+          </ng-container>
+          <ng-container *ngFor="let action of data.actions">
+            <div tappable class="cheer-action" *ngIf="action.type === 'cheer' " (click)="cheerEvent()">
+              <ion-icon [ngClass]="{'animated bounceIn' : animateCheerState, 'icon-active': userHasCheered}" name="ios-thumbs-up-outline"></ion-icon>
+              <span *ngIf="data.cheer.length" [class]="userHasCheered ? 'active': 'dark'">{{data.cheer.length}}</span>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="isLogFeed && data.cheer">
+            <div tappable class="cheer-action">
+              <span *ngIf="data.cheer.length" [class]="userHasCheered ? 'active': 'dark'">{{data.cheer.length}}</span>
+            </div>
+          </ng-container>
+          <div class="clear"></div>
+        </div>
+      </ion-col>
+      <ion-col text-center>
+        <!-- show cheer -->
+        <ion-scroll scrollX="true" *ngIf="isSelected" zooming="false" class="reason_action avatar-scroller" style="text-align: left !important; margin-right: 20px;">
+          <ng-container>
+            <ion-avatar class="cheer_reason" *ngIf="data.reason" style="display: inline-block;" tappable (click)="enlargeReason(data.reason_id)">
+              <img class='reason' src="{{config.mainURL}}/event/reason/{{data.reason_id}}/icon" />
+              <img class='reason_cheer' src="{{config.mainURL}}/class/{{config.class_id}}/student/{{data.other_student_id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+            </ion-avatar>
+          </ng-container>
+        </ion-scroll>
+        <!-- reason from cheer field -->
+        <span class='reason_count active' *ngIf="reason_length">{{reason_length}}</span>
+        <ion-scroll scrollX="true" *ngIf="!isSelected || isGroupFeed" zooming="false" class="reason_action avatar-scroller" style="text-align: left !important; margin-right: 20px;">
+          <div  class="swiper-container" [swiper]="config_swiper1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" *ngFor="let cheer of cheer_list; let i= index">
+                <ion-avatar class="cheer_reason" tappable (click)="enlargeReason(cheer.reason_id)" style="display: inline-block;">
+                  <img class='reason' src="{{config.mainURL}}/event/reason/{{cheer.reason_id}}/icon" />
+                  <img class='reason_cheer' *ngIf="cheer.user_type == 'teacher'" src="assets/images/user.png" />
+                  <img class='reason_cheer' *ngIf="cheer.user_type != 'teacher'" src="{{config.mainURL}}/class/{{config.class_id}}/student/{{cheer.student_id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+                </ion-avatar>
+              </div>
+            </div>
+          </div>
+          <!-- <ng-container *ngFor="let cheer of data.cheer; let i= index">
+            <ion-avatar class="cheer_reason" *ngIf="cheer.reason" tappable (click)="enlargeReason(cheer.reason_id)" style="display: inline-block;">
+              <img class='reason' src="{{config.mainURL}}/event/reason/{{cheer.reason_id}}/icon" />
+              <img class='reason_cheer' src="{{config.mainURL}}/class/{{config.class_id}}/student/{{cheer.student_id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+            </ion-avatar>
+          </ng-container> -->
+        </ion-scroll>
+        <!-- cheer avatar field -->
+        <ion-scroll scrollX="true" *ngIf="isLogFeed || isGroupFeed || classfeed" zooming="false" class="avatar-scroller">
+          <ng-container *ngFor="let cheer of data.cheer; let i= index">
+
+            <ion-avatar [ngClass]="{'fadeInitialState' : cheer.added, 'fadeInMoxie' : cheer.animate}" class="avatar-scroller-avatar"
+              *ngIf="cheer.user_type === 'student' && cheer.student_id">
+              <img src="{{config.mainURL}}/class/{{config.class_id}}/student/{{cheer.student_id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+              </ion-avatar>
+              <ion-avatar [ngClass]="{'fadeInitialState' : cheer.added, 'fadeInMoxie' : cheer.animate}" class="avatar-scroller-avatar"
+                *ngIf="cheer.user_type === 'teacher'">
+                <img src="assets/images/user.png" />
+                </ion-avatar>
+
+          </ng-container>
+        </ion-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>

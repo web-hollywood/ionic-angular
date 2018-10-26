@@ -1,0 +1,74 @@
+page-create-class {
+
+	ion-content{
+		.list-ios > .item-block:first-child{
+			border: none!important;
+		}
+		ion-label{
+			color: black!important;
+			font-weight: bold!important;
+			font-size: 1.4rem!important;
+		}
+		.item-inner{
+			border: none!important;
+		}
+		ion-input,ion-select{
+		    border: 1px solid #dedede!important;
+		    padding: 10px!important;
+		    font-size: 1.3rem;
+		    color: black!important;
+		    opacity: 1.0!important;
+		    .select-text ,.ng-valid{
+		    	color: black!important;
+		    	opacity: 1.0!important;
+		    	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		    		color:    black;
+				}
+				:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   			color:    black;
+		   			opacity:  1;
+				}
+				::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   			color:    black;
+		   			opacity:  1;
+				}
+				:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   			color:    black;
+				}
+				::-ms-input-placeholder { /* Microsoft Edge */
+		   			color:    black;
+				}
+		    }
+
+		}
+
+
+		ion-list {
+			.button {
+				background-color: rgb(180,180,180);
+				color: rgb(240,240,240);
+				text-transform: capitalize;
+				font-weight: 300;
+				font-size: 1.4rem;
+				border-radius: 12px;
+				height: 4.5rem;
+			}
+			.list-ios > .item-block:first-child {
+ 			  	 border-top: none!important;
+			}
+		}
+
+		.overlay {
+			position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+			background: url(../assets/images/placeholder.png);
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-color: white;
+		}
+	}
+}

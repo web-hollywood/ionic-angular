@@ -1,0 +1,118 @@
+page-search-book{
+	ion-header{
+		border-bottom: none!important;
+
+		.autocomplete2 {
+			margin-top: -5px;
+			overflow-y: scroll;
+			max-height: 200px !important;
+			margin-left: 45px;
+			margin-right: 45px;
+			border: 1px solid darkgray;
+			.item-inner{
+				border: none!important;
+			}
+			ion-list {
+				margin-bottom: 0px!important;
+			}
+			ion-item.item-block {
+				height: 3rem;
+			    min-height: 1.4rem!important;
+			}
+		}
+		.hideDiv2 {
+			display: none;
+		}
+	}
+	.header::after {
+	}
+
+	
+	ion-content{
+
+		ion-list{
+			.item-inner{
+				border: none !important;
+			}
+			ion-item{
+				border: none!important;
+				padding-left: 0px!important;
+				.item-inner{
+					padding-right: 0px!important;
+				}
+				ion-label{
+					margin-right: 0px!important;
+					.button-round{
+							padding-left: 10px!important;
+							width: 48%!important;
+							font-size: 1.5rem!important;
+					}
+					.button-full{
+							width: 100%!important;
+					}
+					button{
+						height: 50px!important;
+						border-radius: 10px!important;
+					}
+				}
+				ion-label.label-md{
+					.button-round{
+							margin-left: 3px;
+							width: 48.5%!important;
+					}
+					.button-full{
+							margin-left: 0px;
+							width: 100%!important;
+					}
+				}
+			}
+		}
+	}
+	.scroll-content{
+		div.autocomplete2 {
+				  overflow-y: scroll;
+				  height: 250px !important;
+ 				  box-shadow: 0px 1px 1px 1px #888888;
+ 				  background-color: white!important;
+				  border-radius: 3px!important;
+				  border: 1px solid #f7f7f7;
+				  width: 90%!important;
+				  position: absolute;
+				  top: 0px;
+				  height: 150px;
+				  overflow-y: scroll;
+				  overflow-x: scroll;
+				  z-index: 999;
+				  padding-left: 5%!important;
+				  ion-list {
+				    margin: 0px!important;
+				    width: 100%!important;
+				    width: inherit;
+				    ion-item {
+				      .item-inner{
+				      	border: none!important;
+				      }
+				      img {
+				        max-height: 2.5rem!important;
+				        width: auto;
+				        margin: auto;
+				        display: block;
+				      }
+				    }
+				    ion-item:hover {
+				      cursor: pointer;
+				      background: #f1f1f1!important;
+				    }
+				  }
+				.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ 				   		border-bottom: none!important;
+					}
+				}
+	}
+	ion-list.list{
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+}

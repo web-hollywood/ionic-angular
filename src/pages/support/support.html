@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar color="moxie_{{config.mode}}">
+  	<button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Support</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<button ion-button round full color="navbarBlue" *ngFor="let link of links, let i = index"   (click)="openLink(i)"><p>{{link.title}}</p></button>
+	</ion-list>
+</ion-content>

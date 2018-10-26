@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-navbar color="moxie_{{config.mode}}">
+  	<!-- <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>Scan A Book</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce id='content'>
+  
+  <ion-icon class="bt_remove_scan" name='close' (click)="destoryScan()"></ion-icon>
+  <div id="barcodeReader"></div>
+
+  <div class="bottom_wrapper">
+    <ion-list radio-group [(ngModel)]="sconfig" class="conf_radio" (ionChange)="clickoption()" *ngIf="false">
+      <ion-item>
+        <ion-label>Skating</ion-label>
+        <ion-radio value="option1"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tracing</ion-label>
+        <ion-radio value="option2" checked></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <div class="div_label" [style.margin-top]="mt">Scan or Search a book</div>
+    <div class="" id="div_search" padding>
+      <!--<button ion-button round color="moxie" class="button" (click)="reset()">Reset</button>
+      <button ion-button round color="moxie" class="button" (click)="gosearch()"><ion-icon name="search"></ion-icon></button>
+      <ion-icon class="bt_setting" name="md-settings" (click)="onsetting()"></ion-icon>-->
+      <ion-row>
+        <ion-col col-3>
+          <button ion-button round color="moxie" class="button" (click)="reset()">Reset</button>
+        </ion-col>
+        <ion-col col-6>
+          <ion-searchbar #q  debounce="400" [(ngModel)]="searchValue" (keyup.enter)="getSearchBook(q.value)" (search)="searchBookBySearchbox($event.target.value)" (ionInput)="searchBookBySearchbox($event.target.value)" placeholder="Search for Books, Author,Tags"  (ionBlur)="checkBlur()" autocomplete="on" (ionFocus)="searchBookBySearchbox('')" id="searchbar-ios">
+              </ion-searchbar>
+          <div id="autocomplete" *ngIf = "view_Flag && (((search_flag == 'history') && (search_items.length > 0)) || ((search_flag == 'auto_complete') ))">
+            <ion-list *ngIf = "search_flag == 'history'">
+              <ion-item *ngFor="let item of search_items" (click)="itemClick(item.data?.q)">
+                {{ item.data?.q }}
+              </ion-item>
+            </ion-list>
+            <ion-list *ngIf = "search_flag == 'auto_complete'">
+              <ion-item *ngFor="let item of auto_complete_items.authors" (click)="itemClick(item)">
+                {{ item }}   <h3 style="float: right;font-style: italic;">Authors</h3>
+              </ion-item>
+              <ion-item *ngFor="let item of auto_complete_items.series" (click)="itemClick(item)">
+                {{ item }}	 <h3 style="float: right;font-style: italic;">series</h3>
+              </ion-item>
+              <ion-item *ngFor="let item of auto_complete_items.title" (click)="itemClick(item)">
+                {{ item }}   <h3 style="float: right;font-style: italic;">title</h3>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button round color="moxie" class="button" (click)="createBook()">Create</button>
+        </ion-col>
+      </ion-row>
+      
+    </div>
+    <!-- <div class="div_buttons" padding id="bt_cover_div">
+      <button ion-button round color="moxie" class="button" (click)="onmatchbook()" *ngIf="false">Book Cover Photo Match</button>
+    </div> -->
+
+    <div class="detectOption" *ngIf="false">
+      <div text-center>Scan Quality</div>
+      <ion-select [(ngModel)]="maxDetectNumber" (ngModelChange)="reset()">
+        <ion-option value="10">Very Fast(10 Scans)</ion-option>
+        <ion-option value="20">Fast(20 Scans)</ion-option>
+        <ion-option value="30">Medium (30 Scans)</ion-option>
+        <ion-option value="40">Slow (40 Scans)</ion-option>
+        <ion-option value="50">Very Slow(50 Scans)</ion-option>
+      </ion-select>
+    </div>
+    <p text-center no-margin class='barcodeResults' id="barcodeResults"  *ngIf="false"></p>
+    <p text-center no-margin class='barcodeResults' id="detectCode" style="display: none"></p>
+    <div id="progressbar" *ngIf="false">
+      <div>Detecting status ... </div>
+      <div id="div_range" class="div_range">
+        <div id="div_range_value"></div>
+      </div>
+    </div>
+
+    <!-- maybe config for admin -->
+    <div class="setting_pop" *ngIf="issetting">
+      <div class="form-control">
+        <label>Barcord Type</label>
+        <select [(ngModel)]="barcodes">
+          <option value="EAN">EAN</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>Patch-Size</label>
+        <select [(ngModel)]="pachsize">
+          <option value="x-small">x-small</option>
+          <option value="small">small</option>
+          <option value="medium" selected>medium</option>
+          <option value="large">large</option>
+          <option value="x-large">x-large</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>Workers</label>
+        <select [(ngModel)]="workers">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>locate</label>
+        <select [(ngModel)]="locate">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>drawBoundingBox</label>
+        <select [(ngModel)]="drawBoundingBox">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>frequency</label>
+        <select [(ngModel)]="frequency">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <img class="img_left" src="assets/images/hamster_scanning_left.jpg" />
+  <img class="img_right" src="assets/images/hamster_scanning_right.png" />
+</ion-content>
+
+    <div class="overlay" id="popup" *ngIf="istake">
+      <div class="popup" id="popup_takephoto">
+        <div class="cls_popup" (click)="returnTake();">X</div>
+        <div text-center>Take Picture</div>
+        <div text-center><small>Take a picture of the cover and send it to us, we will try to find this book.</small></div>
+        <div text-center>ISBN</div>
+        <div text-center class="div_isbn"><ion-input [(ngModel)]="missingCode"></ion-input></div>
+        <div id="cameraReader"></div>
+      </div>
+    </div>
+
+    <div class="overlay" id="popup1" *ngIf="iscovermatch">
+      <div class="popup" id="popup_covermatch">
+        <div class="cls_popup" (click)="returnTake();">X</div>
+        <h2 text-center>We have detected a possible cover match, select the covers that is your book, If not press continue</h2>
+        <div text-center>Scanned Book</div>
+        <ion-item class="selbook" (click)="selectBook(-1, 0)" id="item__0">
+          <img class="book_cover" src="{{image}}" />
+        </ion-item>
+        <div text-center>Matched Books</div>
+        <ion-list>
+          <ion-item *ngFor="let item of matchList; let i = index;" (click)="selectBook(i, item.id)" id="item_{{i}}">
+            <img class="book_cover" src="{{bookService.getBookCover(item.id)}}" />
+          </ion-item>
+        </ion-list>
+        <div text-center>
+          <div class="bt_continue" (click)="goTakePicture()">Take Picture</div>
+          <div class="bt_continue" (click)="continue()">Continue</div>
+        </div>
+      </div>
+    </div>

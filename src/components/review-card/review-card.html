@@ -1,0 +1,39 @@
+<ion-card tappable padding>
+    <button *ngIf="canRemoveReview" class="dropdown" tappable (click)="presentPopover($event, data)">
+        <img src="assets/images/down-arrow-icon.png">
+    </button>
+    <div>
+        <div class='div_top' style="float: right">
+            <div style="float: right" tappable (click)="clickReview()">
+                <div class='div_reaction' *ngIf="reaction_idx > -1"><img src="assets/images/reaction_{{ricon[reaction_idx].icon}}.png" /></div>
+                <rating [(ngModel)]="data.rating" readOnly="true"></rating>
+            </div>
+            <div class='div_file' *ngIf="!showForceItem && data.files && data.files.length > 0" tappable (click)="clickFile()">
+                <img src="{{config.mainURL}}/event/{{data.id}}/file/{{data.files[data.files.length-1].filename}}/thumbnail?width=160" />
+            </div>
+        </div>
+        <ion-thumbnail style="float: left" tappable (click)="clickReview()">
+            <ion-avatar>
+                <img *ngIf="data.student_id != null" src="{{config.mainURL}}/class/{{data.classroom_id}}/student/{{data.student_id}}/avatar/thumbnail?width=160&{{config.noCacheImg}}" />
+                <img *ngIf="data.student_id == null" src="/assets/images/user.png" />
+            </ion-avatar>
+            <ion-label>reviewed : <br/><span class='created_time' *ngIf="data.created_at">{{getDate(data.created_at) | amTimeAgo}}</span>
+                <h3 class='student_name' *ngIf="studenttitle != ''">by {{studenttitle}}</h3>
+            </ion-label>
+        </ion-thumbnail>
+        <ion-thumnail *ngIf="showForceItem" [ngClass]="{'wideItem':(showForceItem)}" style="float: left">
+            <div class='div_file' *ngIf="data.files && data.files.length > 0" tappable (click)="clickFile()">
+                <img src="{{config.mainURL}}/event/{{data.id}}/file/{{data.files[data.files.length-1].filename}}/thumbnail?width=160" />
+            </div>
+        </ion-thumnail>
+        <ion-item *ngIf="showForceItem || !data.files || data.files && data.files.length == 0" class="review_item" no-lines tappable [ngClass]="{'wideItem':(showForceItem)}" (click)="clickReview()">
+            <h2 *ngIf="false">Title</h2>
+            <div [ngClass]="{'div_desc div_sec_full':(!isMore), 'div_desc':(isMore)}" [innerHtml]="data.review"></div>
+            <div *ngIf="showmore">
+                <div class='more' *ngIf="isMore" tappable (click)='more()'>More</div>
+                <div class='less' *ngIf="!isMore" tappable (click)='more()'>Less</div>
+            </div>
+        </ion-item>
+    </div>
+    <ion-icon class="btupdate" *ngIf="isedit" name="ios-create-outline" tappable (click)="goReviewEdit()"></ion-icon>
+</ion-card>

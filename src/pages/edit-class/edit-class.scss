@@ -1,0 +1,60 @@
+page-edit-class {
+	ion-slide.swiper-slide {
+		align-items:flex-start !important;
+	}
+
+  ion-item-group {
+    @include moxie-main-font-light();
+  }
+
+  .push-icon {
+    position: absolute;
+    right: 14px;
+  }
+
+  .reading-group-header-container {
+    font-family: $moxie-font;
+    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .reading-group-header-container button {
+    position: absolute;
+    right: 0;
+    top: 6px;
+  }
+
+  .slide-zoom {
+    height: 100%;
+    overflow-y: auto;
+
+    ion-scroll {
+      height: 100%;
+    }
+  }
+
+  .add-item-icon {
+    float: right;
+    font-size: 30px;
+  }
+
+  input::placeholder {
+    color: #e9e9e9 !important;
+  }
+
+  input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #9E9E9E !important;;
+  }
+  input::-moz-placeholder { /* Firefox 19+ */
+    color: #9E9E9E !important;;
+  }
+  input:-ms-input-placeholder { /* IE 10+ */
+    color: #9E9E9E !important;;
+  }
+  input:-moz-placeholder { /* Firefox 18- */
+    color: #9E9E9E !important;;
+  }
+
+}

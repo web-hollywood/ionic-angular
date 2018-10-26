@@ -1,0 +1,68 @@
+user-registration {
+
+  .container {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+  }
+  .close-button {
+    z-index: 200;
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 40px;
+  }
+  div.full-page-frame {
+    position: relative;
+    top: 50px;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
+
+  ion-spinner {
+    position: absolute;
+    top: calc(50% - 14px);
+    left: calc(50% - 14px);
+    width: 28px;
+    height: 28px;
+    stroke: #444;
+    fill: #222;
+    z-index: 111;
+  }
+
+  .loading-overlay {
+    background-color: #9E9E9E;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  .error-loading-iframe {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    z-index: 150;
+    font-size: 35px;
+
+    div {
+      max-width: 500px;
+      margin: 100px auto auto auto;
+      padding: 20px;
+      span {
+        color: map-get($colors, moxie);
+      }
+    }
+  }
+
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ReaderApp",
+  "app_id": "79779842",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

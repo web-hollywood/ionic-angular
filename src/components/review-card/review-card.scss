@@ -1,0 +1,205 @@
+review-card {
+  button.dropdown{
+    height: 20px;
+    background: none !important;
+    background-color: none !important;
+    box-shadow: none !important;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+  }
+  button.dropdown img{
+    width: 20px;
+    height: 20px;
+  }
+  ion-item.item{
+    padding-left: 16px !important;
+  }
+  ion-item.item .item-inner{
+    padding-right: 8px !important;
+  }
+  ion-card.card{
+    margin: 0px;
+    width: 100%;
+    border: 1px solid #eee;
+    position: relative;
+  }
+  .card ion-avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    margin-right: 10px;
+  }
+  .div_top{
+    padding-bottom: 0px !important;
+  }
+  .div_top ion-avatar{
+    display: inline-block;
+    float: left;
+  }
+  .div_top ion-label{
+    display: inline-block;
+    float: left;
+    font-family: 'Alegreya Sans Light';
+     font-size: 16px;
+   }
+   .div_top div.div_reaction{
+     margin-left: 20px;
+   }
+   .div_top div.div_reaction img{
+     width: 60px;
+   }
+   ion-thumnail.wideItem div.div_file,
+   .div_top div.div_file{
+     float: right;
+     margin-right: 10px;
+     margin-top: -10px;
+   }
+   ion-thumnail.wideItem div.div_file img,
+   .div_top div.div_file img{
+      max-width: 160px;
+      max-height: 160px;
+      width: auto;
+   }
+  ion-thumbnail ion-label{
+    width: 90px;
+    white-space: normal;
+    font-size: 1.6rem;
+    color: #666;
+    text-align: left;
+  }
+  ion-item.review_item{
+    float: right;
+    width: calc(100% - 110px);
+  }
+  .div_top rating{
+    float: right;
+    width: 80px;
+  }
+  .div_top rating ul{
+    margin-top: 7px;
+  }
+  .div_top rating ion-icon{
+    font-size: 18px;
+  }
+  .div_top rating ul.rating li{
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+  }
+
+  .div_desc,
+  .div_sec_full{
+    white-space: normal;
+    font-size: 1.4rem;
+    line-height: normal;
+    color: #8e9093;
+    line-height: 18px;
+    height: 54px;
+    min-height: 54px;
+    overflow: hidden;
+    white-space: pre-line;
+  }
+  .div_sec_full{
+    height: auto !important;
+    overflow: visible;
+  }
+  .more,
+  .less{
+    font-size: 14px;
+    text-align: right;
+    color: #558dca;
+  }
+  .btupdate {
+    position: absolute;
+    font-size: 26px;
+    color: #558dca;
+    right: 5px;
+    bottom: 2px;
+  }
+  h3.student_name {
+    font-size: 1.4rem;
+    font-family: "Alegreya Sans", sans-serif;
+    padding-top: 0px;
+  }
+  span.created_time{
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 500px) {
+  review-card{
+    .item-md ion-thumbnail {
+      min-width: 70px;
+      max-width: 70px;
+    }
+    ion-thumbnail ion-label.label {
+      font-size: 1.4rem;
+      line-height: 1 !important;
+      margin: 2px;
+    }
+    ion-thumbnail.wideItem div.div_file,
+    .div_top div.div_file {
+      margin-right: 10px;
+      margin-top: 0px;
+    }
+    ion-thumbnail.wideItem div.div_file img,
+    .div_top div.div_file img {
+      width: 50px;
+    }
+    ion-item.review_item {
+      width: calc(100% - 0px);
+      padding-left: 0px !important;
+    }
+    ion-item.review_item ion-label.label {
+      margin: 2px;
+    }
+  }
+}
+@media (min-width: 501px) {
+  review-card{
+    ion-item.review_item{
+      float: left;
+      width: calc(100% - 210px);
+      padding-left: 0px !important;
+    }
+    *{
+      font-size: 1.6rem;
+    }
+    .div_desc,
+    .div_sec_full{
+      font-size: 1.6rem;
+      line-height: 24px;
+      height: 120px;
+      min-height: 72px;
+    }
+    .div_top rating ion-icon {
+      font-size: 20px !important;
+    }
+    .div_top rating{
+      width: auto;
+    }
+    .card ion-avatar img{
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  review-card{
+    *{
+      font-size: 1.8rem;
+    }
+    .card ion-avatar img{
+      width: 80px;
+      height: 80px;
+    }
+    ion-thumnail.wideItem {
+      width: 160px;
+      float: left;
+    }
+    ion-item.review_item.wideItem {
+      width: calc(100% - 370px);
+    }
+  }
+}
